@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--不需要写实现类-->
+<!--为何原先的namespace=test??-->
+<mapper namespace="dao.StudentDao">
+
+    <insert id="insertStudent" parameterType="Student" >
+INSERT INTO student VALUES (#{name},#{sex},#{age},#{id},#{school})
+    </insert>
+    <delete id="deleteStudent" parameterType="String" >
+DELETE FROM student WHERE NAME =#{NAME }
+   </delete>
+    <!--update语句-->
+    <update id="updateStudent" parameterType="pojo.Student">
+UPDATE student SET school=#{school} WHERE ID=#{id}
+   </update>
+    <resultMap id="StudentMap"  type="pojo.Student">
+        <result property="name" column="name" javaType="java.lang.String"/>
+        <result property="sex" column="sex" javaType="java.lang.String"/>
+        <result property="age" column="age" javaType="java.lang.Integer"/>
+        <result property="id" column="id" javaType="java.lang.Integer"/>
+        <result property="school" column="school" javaType="java.lang.String"/>
+    </resultMap>
+    <select id="findStudentById" parameterType="long" resultMap="StudentMap">
+SELECT * from student where id=#{id}
+   </select>
+    <!--<select id="findAllStudent" resultMap="StudentMap"/>-->
+    <select id="findAllStudent" resultMap="StudentMap">
+        select * from student
+    </select>
+</mapper>

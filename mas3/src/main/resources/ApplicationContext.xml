@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="db.properties"/>
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/wang?characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456wq"/>
+    </bean>
+
+    <!--Factory绑定数据源-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="Mybatis-config.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--加载单个mapper映射器-->
+     <bean id="studentDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+         <property name="mapperInterface"   value="dao.StudentDao"/>
+     </bean>
+
+    <!--加载映射器.扫描整个包-->
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="dao"/>
+        <property name="sqlSessionFactoryBeanName"  value="sqlSessionFactory"/>
+    </bean>-->
+
+
+</beans>
+
