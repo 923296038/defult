@@ -20,8 +20,8 @@ public class testjunit {
 
     @Test
     public void insert(){
-        Student student = new Student("chen","python","2019",
-                "hbpu",6026,"#","#","wang","1","1");
+        Student student = new Student("chen","python",2019,
+                "hbpu",6026,"#","#","wang",1,1);
         studentDaoImpl.insert(student);
     }
     @Test

@@ -18,8 +18,8 @@ public class MainApp {
         StudentDaoImpl studentDaoImpl =
                 (StudentDaoImpl) context.getBean("studentDaoImpl");
 
-        Student student = new Student("chen","python","2019",
-                "hbpu",6026,"#","#","wang","1","1");
+        Student student = new Student("chen","python",2019,
+                "hbpu",6026,"#","#","wang",1,1);
         studentDaoImpl.insert(student);
         log.info("insert ok");
         studentDaoImpl.selectByName("chen");

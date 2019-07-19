@@ -4,19 +4,19 @@ public class Student {
     private int id;
     private String name;
     private String major;
-    private String admission_time;
+    private long admission_time;
     private String graduate_school;
-    private int online_id;
+    private long online_id;
     private String diary_link;
     private String wish;
     private String guide;
-    private String create_time;
-    private String update_time;
+    private long create_time;
+    private long update_time;
 
     public Student() {
     }
 
-    public Student(String name, String major, String admission_time, String graduate_school, int online_id, String diary_link, String wish, String guide,String create_time,String update_time) {
+    public Student(String name, String major, long admission_time, String graduate_school, int online_id, String diary_link, String wish, String guide,long create_time,long update_time) {
         this.name = name;
         this.major = major;
         this.admission_time = admission_time;
@@ -53,11 +53,11 @@ public class Student {
         this.major = major;
     }
 
-    public String getAdmission_time() {
+    public long getAdmission_time() {
         return admission_time;
     }
 
-    public void setAdmission_time(String admission_time) {
+    public void setAdmission_time(long admission_time) {
         this.admission_time = admission_time;
     }
 
@@ -69,7 +69,7 @@ public class Student {
         this.graduate_school = graduate_school;
     }
 
-    public int getOnline_id() {
+    public long getOnline_id() {
         return online_id;
     }
 
@@ -101,19 +101,19 @@ public class Student {
         this.guide = guide;
     }
 
-    public String getCreate_time() {
+    public long getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(String create_time) {
+    public void setCreate_time(long create_time) {
         this.create_time = create_time;
     }
 
-    public String getUpdate_time() {
+    public long getUpdate_time() {
         return update_time;
     }
 
-    public void setUpdate_time(String update_time) {
+    public void setUpdate_time(long update_time) {
         this.update_time = update_time;
     }
 
