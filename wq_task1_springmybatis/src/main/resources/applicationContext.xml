@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 加载数据库配置文件-->
+    <context:property-placeholder location="db.properties"/>
+    <!-- 开启后使用注解-->
+    <context:annotation-config/>
+    <!-- 在spring中注入注解-->
+    <context:component-scan base-package="com.jnshu.*"/>
+
+    <!-- 配置数据源-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="maxActive" value="20"/>
+        <property name="maxWait" value="180"/>
+        <property name="maxIdle" value="5"/>
+    </bean>
+
+    <!--创建sqlSessionFactoryBean
+    绑定Mybatis_congif.xml,绑定datasource,绑定studentMapper.xml-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+          <property name="configLocation" value="Mybatis-config.xml"/>
+          <property name="dataSource" ref="dataSource"/>
+          <property name="mapperLocations" value="studentMapper.xml"/>
+    </bean>
+
+    <!--将映射器注册到sping中????-->
+    <bean id="studentMapper" class=
+            "org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value=
+                "com.jnshu.mapper.StudentMapper"/>
+        <property name="sqlSessionFactory" ref=
+                "sqlSessionFactory"/>
+    </bean>
+
+</beans>

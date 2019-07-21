@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--status：打印日志级别-->
+<configuration status="error">
+
+    <!--定义所有的appender-->
+    <appenders>
+        <!--输出到控制台的配置-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!--控制台只输出level及以上的信息-->
+            <ThresholdFilter level="info" onMatch="ACCEPT"
+                             onMismatch="DENY"/>
+            <!-- 日志输入格式-->
+            <PatternLayout pattern="%d(HH:mm:ss.SSS) %-5level %class(36) %L %M - %msg%xEx%n"/>
+        </Console>
+        <!--指定log打印位置-->
+        <File name="log" fileName="f:/log4jlog/wq_task1_sm.log" append="false">
+            <PatternLayout pattern="%d(HH:mm:ss.SSS) %-5level %class(36) %L %M - %msg%xEx%n"/>
+        </File>
+        <!--指定error级以上打印位置-->
+        <File name="ERROR" fileName="f:/log4jlog/wq_task1_sm.log">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d(HH:mm:ss.SSS) %-5level %class(36) %L %M - %msg%xEx%n"/>
+        </File>
+        <!--打印所有信息，但是超过设置的日志大小限制就会滚动保存，新的日志会覆盖老的日志-->
+        <RollingFile name="RollingFile" fileName="f:/log4jlog/wq_task1_sm.log"
+                     filePattern="logs/$${date:yyyy-MM}/web-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <SizeBasedTriggeringPolicy size="2MB"/>
+        </RollingFile>
+
+    </appenders>
+    <!--定义logger，只有定义logger并引入appender，appender才会生效-->
+    <loggers>
+        <root level="info">
+            <appender-ref ref="RollingFile"/>
+            <appender-ref ref="Console"/>
+            <appender-ref ref="ERROR"/>
+            <appender-ref ref="log"/>
+        </root>
+    </loggers>
+</configuration>

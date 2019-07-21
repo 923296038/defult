@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnshu.mapper.StudentMapper">
+    <!--结果集-->
+    <resultMap id="studentResultMap" type="com.jnshu.pojo.Student">
+        <id property="id" column="id" javaType="java.lang.Long" />
+        <result property="name" column="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="major"  column="major" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="admission_time" column="admission_time" javaType="java.lang.Long" jdbcType="BIGINT"/>
+        <result property="graduate_school" column="graduate_school" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="online_id" column="online_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+        <result property="diary_link" column="diary_link" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="wish" column="wish" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <result property="guide" column="guide" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="create_time" column="create_time" javaType="java.lang.Long" jdbcType="BIGINT"/>
+        <result property="update_time" column="update_time" javaType="java.lang.Long" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <!--insert标签
+    keyProperty不懂.useGeneratedKeys不懂-->
+    <insert id="insertStudent" parameterType="student"
+            keyProperty="id" useGeneratedKeys="true">
+        insert into student (name,major,admission_time,graduate_school,
+        online_id,diary_link,wish,guide,create_time,update_time)
+                values(#{name},#{major},#{admission_time},
+        #{graduate_school},#{online_id},#{diary_link},#{wish},
+        #{guide},#{create_time},#{update_time})
+    </insert>
+    <update id="updateStudent" parameterType="student">
+        update student set wish=#{wish} where name=#{name}
+    </update>
+    <delete id="deleteStudent" parameterType="java.lang.String">
+        delete from student where name =#{name}
+    </delete>
+    <select id="queryStudentById" parameterType="java.lang.Long" resultType="student">
+        select * from student where id=#{id}
+    </select>
+    <select id="queryStudentByName" parameterType="java.lang.String" resultType="student">
+        select * from student where name=#{name}
+    </select>
+
+</mapper>
