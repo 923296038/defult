@@ -14,6 +14,8 @@
       <change beforePath="$PROJECT_DIR$/../SpringTest2/src/main/java/com/shsxt/StudentMapper.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../SpringTest2/src/resources/Beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringTest2/src/resources/Beans.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jnshu/studentdao/StudentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jnshu/studentdao/StudentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jnshu/studentdaoimpl/StudentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jnshu/studentdaoimpl/StudentDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mas3/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mas3/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mas3/Spring and Mybatis Final Demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../mas3/Spring and Mybatis Final Demo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mas3/src/main/java/onlinetest/test/UserService.java" beforeDir="false" />
@@ -42,14 +44,7 @@
       <change beforePath="$PROJECT_DIR$/../mybatis4/src/main/java/com/mybatis/test/Test.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../mybatis4/src/main/java/com/mybatis/test/User.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../mybatis4/src/main/resources/Configuration.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mybatis4/src/main/resources/User.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../wq_task1_springmybatis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../wq_task1_springmybatis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../wq_task1_springmybatis/src/main/java/com/jnshu/mapper/StudentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../wq_task1_springmybatis/src/main/java/com/jnshu/mapper/StudentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../wq_task1_springmybatis/src/main/java/com/jnshu/pojo/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../wq_task1_springmybatis/src/main/java/com/jnshu/pojo/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../wq_task1_springmybatis/src/main/java/com/jnshu/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../wq_task1_springmybatis/src/main/java/com/jnshu/service/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../wq_task1_springmybatis/src/main/java/com/jnshu/serviceimpl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../wq_task1_springmybatis/src/main/java/com/jnshu/serviceimpl/StudentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../wq_task1_springmybatis/src/main/resources/studentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../wq_task1_springmybatis/src/main/resources/studentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../wq_task1_springmybatis/src/test/java/TestSpringMybatis.java" beforeDir="false" afterPath="$PROJECT_DIR$/../wq_task1_springmybatis/src/test/java/TestSpringMybatis.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -73,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jnshu/studentdao/StudentDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+            <state relative-caret-position="294">
+              <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,10 +116,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/testjunit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+            <state relative-caret-position="474">
+              <caret line="40" column="38" lean-forward="true" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#920#921#0" expanded="true" />
+                <element signature="e#973#974#0" expanded="true" />
+                <element signature="e#1008#1009#0" expanded="true" />
+                <element signature="e#1059#1060#0" expanded="true" />
+                <element signature="e#1104#1105#0" expanded="true" />
+                <element signature="e#1135#1136#0" expanded="true" />
+                <element signature="e#1095#1096#0" expanded="true" />
+                <element signature="e#1140#1141#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,11 +151,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jnshu/studentdaoimpl/StudentDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="70" column="20" lean-forward="true" selection-start-line="68" selection-start-column="8" selection-end-line="70" selection-end-column="20" />
+            <state relative-caret-position="284">
+              <caret line="62" column="55" lean-forward="true" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -191,10 +194,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jnshu/student/Student.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jnshu/studentdaoimpl/StudentRowMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jnshu/studentdao/StudentDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jnshu/mainapp/MainApp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jnshu/studentdaoimpl/StudentDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/testjunit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jnshu/studentdao/StudentDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jnshu/studentdaoimpl/StudentDaoImpl.java" />
       </list>
     </option>
   </component>
@@ -428,6 +431,7 @@
       <workItem from="1563677831969" duration="10000" />
       <workItem from="1563679533423" duration="4985000" />
       <workItem from="1563693436616" duration="946000" />
+      <workItem from="1563697324871" duration="243000" />
     </task>
     <task id="LOCAL-00001" summary="任务1的jdbctemplate部分">
       <created>1563522018502</created>
@@ -457,7 +461,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563693235802</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="jdbcTemplate完善">
+      <created>1563697464012</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1563697464012</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -493,12 +504,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40988000" />
+    <option name="totallyTimeSpent" value="41231000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="766" y="0" width="747" height="840" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.3628447" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21514745" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -539,7 +551,8 @@
     <MESSAGE value="修改了数据类型" />
     <MESSAGE value="增加了插入数据返回ID" />
     <MESSAGE value="插返,删改返." />
-    <option name="LAST_COMMIT_MESSAGE" value="插返,删改返." />
+    <MESSAGE value="jdbcTemplate完善" />
+    <option name="LAST_COMMIT_MESSAGE" value="jdbcTemplate完善" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/TestLog.java" />
@@ -565,23 +578,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="643" column="14" selection-start-line="643" selection-start-column="14" selection-end-line="643" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jnshu/student/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jnshu/studentdao/StudentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -612,16 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/testjunit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/db.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -636,10 +622,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/testjunit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="40" column="38" lean-forward="true" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#973#974#0" expanded="true" />
+            <element signature="e#1008#1009#0" expanded="true" />
+            <element signature="e#1059#1060#0" expanded="true" />
+            <element signature="e#1104#1105#0" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jnshu/student/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jnshu/studentdaoimpl/StudentDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="70" column="20" lean-forward="true" selection-start-line="68" selection-start-column="8" selection-end-line="70" selection-end-column="20" />
+        <state relative-caret-position="284">
+          <caret line="62" column="55" lean-forward="true" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jnshu/studentdao/StudentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

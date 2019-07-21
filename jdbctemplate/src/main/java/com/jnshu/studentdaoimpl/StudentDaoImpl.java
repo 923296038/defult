@@ -40,7 +40,7 @@ public class StudentDaoImpl implements StudentDao {
         //log.info(student1.getId());
     }
 
-    public void insertReturnId(Student student){
+    public int insertReturnId(Student student){
         ApplicationContext context =
                 new ClassPathXmlApplicationContext
                         ("applicationContext.xml");
@@ -54,13 +54,15 @@ public class StudentDaoImpl implements StudentDao {
                 ,student.getDiary_link(),student.getWish(),student.getGuide(),
                 student.getCreate_time(),student.getUpdate_time());
         studentDaoImpl.returnId(student.getOnline_id());
+        return student.getId();
     }
 
-    public void returnId(long online_id){
+    public int returnId(long online_id){
         String SQL = "select * from student where online_id = ?";
         Student student = jdbcTemplate.queryForObject
                 (SQL,new StudentRowMapper(),online_id);
         log.info(student.getId());
+        return student.getId();
     }
 
     public boolean delete(String name){
