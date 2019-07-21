@@ -73,7 +73,7 @@ public class Student {
         return online_id;
     }
 
-    public void setOnline_id(int online_id) {
+    public void setOnline_id(long online_id) {
         this.online_id = online_id;
     }
 

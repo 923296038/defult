@@ -1,8 +1,11 @@
 package com.jnshu.serviceimpl;
 
+import com.jnshu.client.Client;
 import com.jnshu.mapper.StudentMapper;
 import com.jnshu.pojo.Student;
 import com.jnshu.service.StudentService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class StudentServiceImpl implements StudentService {
     @Autowired  //
     StudentMapper studentMapper;
+    private static final Logger log= LogManager.getLogger(Client.class);
     @Autowired
     //构造器
     public StudentServiceImpl(StudentMapper studentMapper)
@@ -19,21 +23,32 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public void insertStudent(Student student){
+    public int insertStudent(Student student){
         studentMapper.insertStudent(student);
-
+        return student.getId();
+    }
+    @Override
+    //插入一条数据,返回他的id
+    public int insertStudentReturnId(Student student){
+        studentMapper.insertStudent(student);
+        studentMapper.queryStudentByOnline_Id(student.getOnline_id());
+        log.info(student.getId());
+        return student.getId();
+    }
+    @Override
+    public int deleteStudent(String name) {
+        int result = studentMapper.deleteStudent(name);
+        boolean flag = result>0?true:false;
+        log.info(flag);
+        return result;
     }
 
     @Override
-    public boolean deleteStudent(String name) {
-        studentMapper.deleteStudent(name);
-        return true;
-    }
-
-    @Override
-    public boolean updateStudent(Student student) {
-        studentMapper.updateStudent(student);
-        return true;
+    public int updateStudent(Student student) {
+        int result = studentMapper.updateStudent(student);
+        boolean flag = result>0?true:false;
+        log.info(flag);
+        return result;
     }
 
     /*//这个方法并不能打印所查询的信息
@@ -42,14 +57,17 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.queryStudentByName(name);
     }*/
     @Override
-    public void queryStudentByName(String name) {
+    public Student queryStudentByName(String name) {
         Student student = studentMapper.queryStudentByName(name);
-        System.out.println(student);
+        log.info(student);
+        return student;
     }
 
     @Override
-    public void queryStudentByID(int id) {
+    public Student queryStudentByID(int id) {
         Student student = studentMapper.queryStudentById(id);
-        System.out.println(student);
+        log.info(student);
+        return student;
     }
+
 }

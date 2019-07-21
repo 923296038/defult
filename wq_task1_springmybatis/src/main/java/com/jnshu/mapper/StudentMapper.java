@@ -4,9 +4,10 @@ import com.jnshu.pojo.Student;
 
 public interface StudentMapper {
     int insertStudent(Student student);
-    boolean deleteStudent(String name);
-    boolean updateStudent(Student student);
+    int deleteStudent(String name);
+    int updateStudent(Student student);
 
     Student queryStudentById(int id);
     Student queryStudentByName(String name);
+    Student queryStudentByOnline_Id(long online_id);
 }

@@ -34,11 +34,13 @@
     <delete id="deleteStudent" parameterType="java.lang.String">
         delete from student where name =#{name}
     </delete>
-    <select id="queryStudentById" parameterType="java.lang.Long" resultType="student">
+    <select id="queryStudentById" parameterType="java.lang.Integer" resultType="student">
         select * from student where id=#{id}
     </select>
     <select id="queryStudentByName" parameterType="java.lang.String" resultType="student">
         select * from student where name=#{name}
     </select>
-
+    <select id="queryStudentByOnline_Id" parameterType="java.lang.Long" resultType="student">
+        select * from student where online_id=#{online_id}
+    </select>
 </mapper>

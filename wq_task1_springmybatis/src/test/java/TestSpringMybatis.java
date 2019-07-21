@@ -13,6 +13,7 @@ public class TestSpringMybatis {
             ClassPathXmlApplicationContext("applicationContext.xml");
     StudentService studentService= (StudentService) context.getBean("studentService");
     @Test
+    //测试插入一条数据,但不打印信息
     public void insert(){
         Student student =new Student();
         student.setOnline_id(1181);
@@ -21,16 +22,32 @@ public class TestSpringMybatis {
         studentService.insertStudent(student);
     }
     @Test
+    //测试插入一条数据后返回它的id
+    public void insertReturnId(){
+        Student student =new Student();
+        student.setOnline_id(11814);
+        student.setWish("6666");
+        student.setName("wangquan");
+        studentService.insertStudentReturnId(student);
+    }
+    @Test
+    //测试根据名字查询
     public void queryByName() {
         studentService.queryStudentByName("wangquan");
     }
     @Test
+    //测试根据id查询
+    public void queryById(){studentService.queryStudentByID(30);}
+    @Test
+    //测试修改立愿
     public void update(){
         Student student =new Student();
-        student.setWish("9999");
+        student.setName("wangquan");
+        student.setWish("666");
         studentService.updateStudent(student);
     }
     @Test
+    //测试根据姓名删除某些数据
     public void delete(){
         studentService.deleteStudent("wangquan");
     }
