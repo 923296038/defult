@@ -29,8 +29,12 @@ public class testjunit {
         studentDaoImpl.update("chen","wq666");
     }
     @Test
-    public void query(){
+    public void queryByName(){
         studentDaoImpl.selectByName("chen");
+    }
+    @Test
+    public void queryById(){
+        studentDaoImpl.selectById(51);
     }
     @Test
     public void delete(){
