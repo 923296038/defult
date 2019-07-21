@@ -20,7 +20,7 @@ public class MainApp {
 
         Student student = new Student("chen","python",2019,
                 "hbpu",6026,"#","#","wang",1,1);
-        studentDaoImpl.insert(student);
+        studentDaoImpl.insertReturnId(student);
         log.info("insert ok");
         studentDaoImpl.selectByName("chen");
         studentDaoImpl.update("chen","wq666");
