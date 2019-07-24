@@ -1,0 +1,11 @@
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+    <!-- 只需配置别名，其他的配置使用其他的方法进行配置 -->
+    <typeAliases>
+        <typeAlias type="com.jnshu.entity.User" alias="user"/>
+    </typeAliases>
+</configuration>

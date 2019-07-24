@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jnshu.dao.UserDao">
+
+    <!--注意sql语句没有分号结尾  -->
+
+    <!--注意这里的参数类型是parameterType而不是parameterMap，因为返回的是单个类型  -->
+    <insert id="addUser"  parameterType="user"
+            keyProperty="id" useGeneratedKeys="true">
+		insert into user (name) values (#{name})
+	</insert>
+
+</mapper>
