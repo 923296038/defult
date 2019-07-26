@@ -44,7 +44,7 @@
          <td>${student.name}</td>
          <td>${student.qq}</td>
          <td>${student.learn_type}</td>
-<%--         <td><date:date value ="${student.entrance_time} "/></td>--%>
+         <td><date:date value ="${student.entrance_time} "/></td>
          <td>${student.school}</td>
          <td>${student.id}</td>
          <td>${student.daily_link}</td>
@@ -53,8 +53,10 @@
          <td>${student.way}</td>
 <%--         <td><date:date value ="${student.create_time} "/></td>--%>
 <%--         <td><date:date value ="${student.update_time} "/></td>--%>
+<%--         <td><a href="${pageContext.request.contextPath}/Student/toUpdateStudent/${student.id}">编辑</a></td>--%>
          <td><a href="${pageContext.request.contextPath}/toUpdateStudent/${student.id}">编辑</a></td>
-         <td><form action="${pageContext.request.contextPath}/deleteStudent/${student.id}" method="post">
+<%--         <td><form action="${pageContext.request.contextPath}/Student/deleteStudent/${student.id}" method="post">--%>
+         <td><form action="${pageContext.request.contextPath}/deleteStudent/{id}" method="post">
              <input type="hidden" name="_method" value="DELETE">
              <input TYPE="submit" value="删除"></form>
          </td>

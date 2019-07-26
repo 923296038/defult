@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.StudentService;
 import com.pojo.Student;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.lang.annotation.Target;
 import java.util.List;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 @Controller
-@RequestMapping(value = "/Student")
 public class StudentController {
     @Autowired
     StudentService studentService;
@@ -55,24 +54,38 @@ public class StudentController {
      * @param id
      * @return
      */
-    @RequestMapping(value="/toUpdateStudent/{id}",method = RequestMethod.GET)
-    public String toUpdateStudent(Model model,@PathVariable long id){
+    @RequestMapping(value="/toUpdateStudent/{id}",
+            method = RequestMethod.GET)
+    public String toUpdateStudent
+            (Model model,@PathVariable long id){
+        //先获得原数据才能更改
         Student student=studentService.findStudentById(id);
+        //model.addAttibute 往前台传数据
         model.addAttribute("student",student);
-        return "edit";
+        return "updateStudent";
     }
-    /**
-     * 更新学生数据
-     */
-    @RequestMapping(value="/updateStudent",method = RequestMethod.POST)
-    public String updateStudent(Model model,Student student){
-        if (studentService.updateStudent(student)){
-            student=studentService.findStudentById(student.getId());
-            model.addAttribute("student",student);
-            return "redirect:/findAllStudent";
-        }
-        return "error";
+    @RequestMapping(value = "/updateStudent",method = RequestMethod.POST)
+    public String updateStudent(Student student){
+        studentService.updateStudent(student);
+        return "redirect:/findAllStudent";
     }
+
+//    @RequestMapping(value="/updateStudent",method = RequestMethod.POST)
+//    public String updateStudent(Model model,Student student){
+//        if (studentService.updateStudent(student)){
+//            student=studentService.findStudentById(student.getId());
+//            model.addAttribute("student",student);
+//            return "redirect:/findAllStudent";
+//        }
+//        return "error";
+//    }
+    @RequestMapping("/toUpdateStudent")
+//    public String toUpdateStudent(Model model, Long id) {
+    public String toUpdateStudent() {
+//        model.addAttribute("student", studentService.findStudentById(id));
+        return "updateStudent";
+    }
+
 
     /**
      * 根据姓名查询学生
@@ -118,5 +131,11 @@ public class StudentController {
     }
 
     /*我的改写*/
-
+    @Test
+    public void testUpd(Student student){
+        Student student1 = new Student();
+        student1.setId(66);
+        student1.setWish("666666");
+        studentService.updateStudent(student1);
+    }
 }
