@@ -53,10 +53,12 @@
          <td>${student.way}</td>
 <%--         <td><date:date value ="${student.create_time} "/></td>--%>
 <%--         <td><date:date value ="${student.update_time} "/></td>--%>
-<%--         <td><a href="${pageContext.request.contextPath}/Student/toUpdateStudent/${student.id}">编辑</a></td>--%>
+
+             <%--点击编辑时,会将这一条数据的id信息传入控制层的toUpdate方法
+             toUpdate方法中,会按这个id去查询,返回这条数据信息--%>
          <td><a href="${pageContext.request.contextPath}/toUpdateStudent/${student.id}">编辑</a></td>
-<%--         <td><form action="${pageContext.request.contextPath}/Student/deleteStudent/${student.id}" method="post">--%>
-         <td><form action="${pageContext.request.contextPath}/deleteStudent/{id}" method="post">
+         <td><form action="${pageContext.request.contextPath}/deleteStudent/${student.id}" method="post">
+<%--         <td><form action="${pageContext.request.contextPath}/deleteStudent/{id}" method="post">--%>
              <input type="hidden" name="_method" value="DELETE">
              <input TYPE="submit" value="删除"></form>
          </td>

@@ -32,6 +32,10 @@
             </div>
         </div>
     </div>
+    <%--action指向方法url
+    id是原数据的id,输入框中输入name
+    点击提交后,submit,参数传入updateStudent方法
+    --%>
     <form name="studentForm" action="<%=basePath%>/updateStudent"
           method="post" >
         <input type="hidden" name="id" value="${student.id}"/>

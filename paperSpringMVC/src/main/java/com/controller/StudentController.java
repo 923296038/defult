@@ -45,14 +45,12 @@ public class StudentController {
     public ModelAndView addStudent(Student student) {
         studentService.insertStudent(student);
         ModelAndView mav = new ModelAndView
-                ("redirect:/Student/findAllStudent");
+                ("redirect:/findAllStudent");
         return mav;
     }
+
     /**
-     * 跳转到学生更新界面
-     * @param model
-     * @param id
-     * @return
+     参数model是什么意思?
      */
     @RequestMapping(value="/toUpdateStudent/{id}",
             method = RequestMethod.GET)
@@ -64,7 +62,9 @@ public class StudentController {
         model.addAttribute("student",student);
         return "updateStudent";
     }
-    @RequestMapping(value = "/updateStudent",method = RequestMethod.POST)
+
+    @RequestMapping(value = "/updateStudent",
+            method = RequestMethod.POST)
     public String updateStudent(Student student){
         studentService.updateStudent(student);
         return "redirect:/findAllStudent";
