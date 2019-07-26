@@ -70,26 +70,6 @@ public class StudentController {
         return "redirect:/findAllStudent";
     }
 
-//    @RequestMapping(value="/updateStudent",method = RequestMethod.POST)
-//    public String updateStudent(Model model,Student student){
-//        if (studentService.updateStudent(student)){
-//            student=studentService.findStudentById(student.getId());
-//            model.addAttribute("student",student);
-//            return "redirect:/findAllStudent";
-//        }
-//        return "error";
-//    }
-    @RequestMapping("/toUpdateStudent")
-//    public String toUpdateStudent(Model model, Long id) {
-    public String toUpdateStudent() {
-//        model.addAttribute("student", studentService.findStudentById(id));
-        return "updateStudent";
-    }
-
-
-    /**
-     * 根据姓名查询学生
-     */
     @RequestMapping(value="/findStudent",method = RequestMethod.GET)
     public String findStudent(Model model, String name, @Validated Student student, BindingResult result){
         if (name==null && result.hasErrors()){
@@ -102,24 +82,17 @@ public class StudentController {
         }
         List<Student> studentList=studentService.findStudentByName(name);
         System.out.println(studentList);
+        //提交到前台,视图层才能显示数据
         model.addAttribute(studentList);
         return "select";
     }
 
-    /**
-     * 根据id删除学生
-     */
     @RequestMapping(value = "/deleteStudent/{id}",method = RequestMethod.DELETE)
     public String deleteStudent(@PathVariable long id,@Validated Student student,BindingResult result){
         studentService.deleteStudent(id);
         return "redirect:/findAllStudent";
     }
 
-    /**
-     * 查询学生所有数据
-     */
-    //分页查询
-    //为什么有修改还不能提交修改???
     @RequestMapping(value = "/findAllStudent", method =RequestMethod.GET)
     public String findAllStudent(Model model, @RequestParam(defaultValue = "1",required = true,value = "pageNo")Integer pageNo)  {
         Integer pageSize=5;//每页显示记录数为5
@@ -130,12 +103,4 @@ public class StudentController {
         return "studentInfo";
     }
 
-    /*我的改写*/
-    @Test
-    public void testUpd(Student student){
-        Student student1 = new Student();
-        student1.setId(66);
-        student1.setWish("666666");
-        studentService.updateStudent(student1);
-    }
 }
