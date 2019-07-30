@@ -6,9 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"  import="java.util.*" %>
+<%@ page isELIgnored="false" %>
 <% String path=request.getContextPath();
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib uri="/tags" prefix="date"%>
 <html>
 <head>
@@ -16,9 +17,9 @@
     <title>学生列表</title>
 </head>
 <body>
-<h2><a href="${pageContext.request.contextPath}/toAddStudent">添加用户</a> </h2>
+<h2><a href="<%=basePath%>/toAddStudent">添加用户</a> </h2>
 <%--${pageContext.request.contextPath}是绝对路径--%>
-<form action="${pageContext.request.contextPath }/findStudent" method="GET">
+<form action="<%=basePath%>/findStudent" method="GET">
     <label for="name">姓名：</label>
     <input id="name" name="name">
     <input type="submit" value="查询"/>
@@ -39,6 +40,7 @@
       <th>表格创建时间</th>
       <th>表格更新时间</th>
   </tr>
+  <%--传入数据--%>
  <c:forEach items="${pageInfo.list}" var="student" >
      <tr>
          <td>${student.name}</td>
@@ -56,8 +58,10 @@
 
              <%--点击编辑时,会将这一条数据的id信息传入控制层的toUpdate方法
              toUpdate方法中,会按这个id去查询,返回这条数据信息--%>
-         <td><a href="${pageContext.request.contextPath}/toUpdateStudent/${student.id}">编辑</a></td>
-         <td><form action="${pageContext.request.contextPath}/deleteStudent/${student.id}" method="post">
+
+             <%--         修改了路径.改成了<%=basePath%>/>--%>
+         <td><a href="<%=basePath%>/toUpdateStudent/${student.id}">编辑</a></td>
+         <td><form action="<%=basePath%>/deleteStudent/${student.id}" method="post">
 <%--         <td><form action="${pageContext.request.contextPath}/deleteStudent/{id}" method="post">--%>
              <input type="hidden" name="_method" value="DELETE">
              <input TYPE="submit" value="删除"></form>

@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="paperSpringMVC" />
-        <module name="ksy" />
+        <module name="task2" />
       </profile>
     </annotationProcessing>
   </component>
