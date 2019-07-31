@@ -1,0 +1,16 @@
+<configuration>
+    <!-- always a good activate OnConsoleStatusListener -->
+    <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/access.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/access.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>{"remote_addr":"%h","http_user_agent":"%i{User-Agent}","time_local":"%date{yyyy-MM-dd HH:mm:ss.SSS}","request":"%r","service_host":"%A","service_name":"%v","status":"%s","body_bytes_sent":"%b","request_time":"%D","app_name":"appname"}</pattern>
+        </encoder>
+    </appender>
+
+    <appender-ref ref="FILE" />
+</configuration>

@@ -6,23 +6,17 @@ import com.service.StudentService;
 import com.pojo.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.lang.annotation.Target;
+import java.util.HashMap;
 import java.util.List;
-
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
 @Controller
 public class StudentController {
@@ -119,6 +113,18 @@ public class StudentController {
         PageInfo<Student> pageInfo =new PageInfo<Student>(studentList);
         model.addAttribute("pageInfo",pageInfo);
         return "studentInfo";
+    }
+    @RequestMapping("testJ")
+    @ResponseBody
+    public HashMap testJ()
+    {
+        HashMap s = new HashMap();
+        s.put("student.id ", "1");
+        return s;
+    }
+    @RequestMapping("json")
+    public String json(){
+        return "json";
     }
 
 }
