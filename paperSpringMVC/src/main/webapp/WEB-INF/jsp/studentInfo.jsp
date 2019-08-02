@@ -18,8 +18,13 @@
 </head>
 <body>
 <h2><a href="<%=basePath%>/toAddStudent">添加用户</a> </h2>
+<c:if test="${allErrors != null }">
+    <c:forEach items="${allErrors }" var="error">
+        <font color="red" >${ error.defaultMessage}</font>
+    </c:forEach>
+</c:if>
 <%--${pageContext.request.contextPath}是绝对路径--%>
-<form action="<%=basePath%>/findStudent" method="GET">
+<form action="<%=basePath%>/findStudent_v" method="GET">
     <label for="name">姓名：</label>
     <input id="name" name="name">
     <input type="submit" value="查询"/>

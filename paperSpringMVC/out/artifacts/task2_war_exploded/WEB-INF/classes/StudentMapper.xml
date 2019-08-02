@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.StudentMapper">
+    <!--插入数据-->
+    <insert id="insertStudent" parameterType="student" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO student (name,qq,learn_type,entrance_time,school,daily_link,wish,senior,way,create_time,update_time)
+        VALUES (#{name},#{qq},#{learn_type},
+                #{entrance_time},
+                #{school},
+                #{daily_link},
+                #{wish},
+                #{senior},
+                #{way},
+                #{create_time},
+                #{update_time})
+    </insert>
+
+    <!--根据ID删除数据-->
+    <delete id="deleteStudent" parameterType="java.lang.Long">
+        DELETE
+        FROM student
+        WHERE id = #{id }
+    </delete>
+
+    <!-- 更新数据-->
+    <update id="updateStudent" parameterType="student">
+        UPDATE student
+        set name=#{name},qq=#{qq},learn_type=#{learn_type},school=#{school},wish=#{wish} WHERE id=#{id}
+    </update>
+
+    <resultMap id="StudentResultMap" type="com.pojo.Student">
+        <id property="id" column="id" javaType="java.lang.Long"/>
+        <result property="name" column="name" javaType="java.lang.String"/>
+        <result property="qq" column="qq" javaType="java.lang.Integer"/>
+        <result property="learn_type" column="learn_type" javaType="java.lang.String"/>
+        <result property="entrance_time" column="entrance_time" javaType="java.lang.Long"/>
+        <result property="school" column="school" javaType="java.lang.String"/>
+        <result property="daily_link" column="daily_link" javaType="java.lang.String"/>
+        <result property="wish" column="wish" javaType="java.lang.String"/>
+        <result property="senior" column="senior" javaType="java.lang.String"/>
+        <result property="way" column="way" javaType="java.lang.String"/>
+        <result property="create_time" column="create_time" javaType="java.lang.Long"/>
+        <result property="update_time" column="update_time" javaType="java.lang.Long"/>
+    </resultMap>
+
+    <!-- 根据姓名查询数据-->
+    <select id="findStudentByName" parameterType="java.lang.String" resultMap="StudentResultMap">
+        SELECT *
+        from student
+        where name = #{name}
+    </select>
+
+    <!--根据ID查询学生数据-->
+    <select id="findStudentById" parameterType="java.lang.Long" resultType="student">
+        select * FROM student where id=#{id}
+    </select>
+
+    <!--查询所有学生-->
+    <select id="findAllStudent" resultMap="StudentResultMap">
+        select * from student
+    </select>
+</mapper>

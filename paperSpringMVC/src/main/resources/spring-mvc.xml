@@ -13,20 +13,54 @@
 <!--    </context:component-scan>-->
     <context:component-scan base-package="com.controller" />
 
-    <mvc:annotation-driven />
+
+
 
     <!-- 2.静态资源默认servlet配置
         (1)加入对静态资源的处理：js,gif,png
         (2)允许使用"/"做整体映射
      -->
-    <mvc:default-servlet-handler/>
+
 
     <!-- 3.配置jsp 显示ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/WEB-INF/jsp/" />
+<!--        <property name="prefix" value="/"/>-->
         <property name="suffix" value=".jsp" />
     </bean>
+
+    <mvc:default-servlet-handler/>
+
+
+
+    <!--校验器注入处理器适配器中-->
+    <mvc:annotation-driven  validator="validator"/>
+
+    <!--配置校验器 start-->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <!-- hibernate校验器 -->
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <!-- 指定校验使用的资源文件，在文件中配置校验错误信息,如不指定，则默认classpath下的validationMessage.properties文件 -->
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+    <!-- 校验错误信息配置文件 -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <!-- 资源文件名 -->
+        <property name="basenames">
+            <list>
+                <!-- 配置错误信息文件 CustomValidationMessages.properties-->
+                <value>classpath:CustomValidationMessages</value>
+            </list>
+        </property>
+        <!-- 解决中文乱码 -->
+        <property name="defaultEncoding" value="utf-8"></property>
+        <!-- 资源文件编码格式 -->
+        <property name="fileEncodings" value="utf-8"></property>
+        <!-- 资源文件缓存时间 -->
+        <property name="cacheSeconds" value="120"></property>
+    </bean>
+    <!--配置校验器 end-->
 
     <!-- 4.扫描web相关的bean -->
 

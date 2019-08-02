@@ -4,6 +4,11 @@ package com.pojo;
 //
 //import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Student {
     /**
      @NotEmpty 用在集合类上面
@@ -11,6 +16,8 @@ public class Student {
      @NotNull 用在基本类型上
      */
 //    @NotBlank(message = "学生姓名不能为空")
+
+    @NotBlank(message = "姓名不为空")
     private String name;
     private int qq;
     private String learn_type;

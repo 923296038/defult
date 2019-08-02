@@ -44,6 +44,11 @@
 <%--        wish：<input type="text" name="paperNum" value="${student.wish}"/>--%>
 <%--        school：<input type="text" name="paperDetail" value="${student.school}"/>--%>
         <input type="submit" value="提交" />
+        <c:if test="${allErrors != null }">
+            <c:forEach items="${allErrors }" var="error">
+                <font color="red" >${ error.defaultMessage}</font>
+            </c:forEach>
+        </c:if>
     </form>
 </div>
 </body>
