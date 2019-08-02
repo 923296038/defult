@@ -17,14 +17,14 @@
     <title>学生列表</title>
 </head>
 <body>
-<h2><a href="<%=basePath%>/toAddStudent">添加用户</a> </h2>
+<h2><a href="<%=basePath%>/toStudentMore">添加用户</a> </h2>
 <c:if test="${allErrors != null }">
     <c:forEach items="${allErrors }" var="error">
         <font color="red" >${ error.defaultMessage}</font>
     </c:forEach>
 </c:if>
 <%--${pageContext.request.contextPath}是绝对路径--%>
-<form action="<%=basePath%>/findStudent_v" method="GET">
+<form action="<%=basePath%>/StudentByName_v" method="GET">
     <label for="name">姓名：</label>
     <input id="name" name="name">
     <input type="submit" value="查询"/>
@@ -65,8 +65,8 @@
              toUpdate方法中,会按这个id去查询,返回这条数据信息--%>
 
              <%--         修改了路径.改成了<%=basePath%>/>--%>
-         <td><a href="<%=basePath%>/toUpdateStudent/${student.id}">编辑</a></td>
-         <td><form action="<%=basePath%>/deleteStudent/${student.id}" method="post">
+         <td><a href="<%=basePath%>/toStudentInfo/${student.id}">编辑</a></td>
+         <td><form action="<%=basePath%>/StudentLesser/${student.id}" method="post">
 <%--         <td><form action="${pageContext.request.contextPath}/deleteStudent/{id}" method="post">--%>
              <input type="hidden" name="_method" value="DELETE">
              <input TYPE="submit" value="删除"></form>

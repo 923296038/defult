@@ -22,8 +22,8 @@
 </head>
 <body>
 <h3>
-    <a href="<%=basePath%>/findAllStudent">显示学生</a>
-        <a href="<%=basePath%>/toAddStudent">添加学生</a>
+    <a href="<%=basePath%>/AllStudent">显示学生</a>
+        <a href="<%=basePath%>/toStudentMore">添加学生</a>
     <a href="<%=basePath%>/json">测试json</a>
     <%--    <a href="<%=basePath%>/jump">学生管理界面</a>--%>
 </h3>

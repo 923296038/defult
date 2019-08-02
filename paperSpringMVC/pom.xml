@@ -10,7 +10,7 @@
   <packaging>war</packaging>
 
   <name>Task Maven Webapp</name>
-  <!-- FIXME change it to the project'studentInfo.jsp website -->
+  <!-- FIXME change it to the project'AllStudent.jsp website -->
   <url>http://www.example.com</url>
 
   <properties>

@@ -37,7 +37,7 @@
     id是原数据的id,输入框中输入name
     点击提交后,submit,参数传入updateStudent方法
     --%>
-    <form name="studentForm" action="<%=basePath%>/updateStudent"
+    <form name="studentForm" action="<%=basePath%>/StudentInfo"
           method="post" >
         <input type="hidden" name="id" value="${student.id}"/>
         name：<input type="text" name="name" value="${student.name}"/>

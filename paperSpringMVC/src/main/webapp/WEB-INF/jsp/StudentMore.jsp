@@ -53,7 +53,7 @@
     <script type="text/javascript">
         function addStudent() {
             var form = document.forms[0];
-            form.action = "<%=basePath %>/addStudent";
+            form.action = "<%=basePath %>/StudentMore";
             form.method = "post";
             form.submit();
         }

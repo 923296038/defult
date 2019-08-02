@@ -32,26 +32,26 @@ public class StudentController {
     /**
      * 跳转到学生添加界面
      */
-    @RequestMapping(value = "toAddStudent")
+    @RequestMapping(value = "toStudentMore")
     public String toAddStudent(){
         log.info("1");
-        return "addStudent";
+        return "StudentMore";
     }
     /**
      * 添加学生
      */
-    @RequestMapping(value="addStudent2",method = RequestMethod.POST)
+    /*@RequestMapping(value="addStudent2",method = RequestMethod.POST)
     public String addStudent( Model model,Student student){
         studentService.insertStudent(student);
         model.addAttribute("student",student);
         return "redirect:/findAllStudent";
-    }
+    }*/
 
-    @RequestMapping(value = "addStudent")
+    @RequestMapping(value = "StudentMore")
     public ModelAndView addStudent(Student student) {
         studentService.insertStudent(student);
         ModelAndView mav = new ModelAndView
-                ("redirect:/findAllStudent");
+                ("redirect:/AllStudent");
         log.info("1");
         return mav;
     }
@@ -59,7 +59,7 @@ public class StudentController {
     /**
      参数model是什么意思?
      */
-    @RequestMapping(value="toUpdateStudent/{id}",
+    @RequestMapping(value="toStudentInfo/{id}",
             method = RequestMethod.GET)
     public String toUpdateStudent
             (Model model,@PathVariable long id){
@@ -68,19 +68,19 @@ public class StudentController {
         //model.addAttibute 往前台传数据
         model.addAttribute("student",student);
         log.info("1");
-        return "updateStudent";
+        return "StudentInfo";
     }
 
-    @RequestMapping(value = "updateStudent",
+    @RequestMapping(value = "StudentInfo",
             method = RequestMethod.POST)
     public String updateStudent(Student student){
         studentService.updateStudent(student);
         log.info("1");
-        return "redirect:findAllStudent";
+        return "redirect:AllStudent";
     }
 
     //查询一个学生
-    @RequestMapping(value="findStudent",method = RequestMethod.GET)
+    @RequestMapping(value="StudentById",method = RequestMethod.GET)
     public String findStudent(Model model, String name,
               @Validated Student student, BindingResult result){
         if (name==null && result.hasErrors()){
@@ -96,12 +96,12 @@ public class StudentController {
         //addAttribute提交到前台,视图层才能显示数据
         model.addAttribute(studentList);
         log.info("1");
-        return "select";
+        return "ChosenOne";
     }
 
     //查询,带校验
     //bindingResult接受错误
-    @RequestMapping(value="findStudent_v",method = RequestMethod.GET)
+    @RequestMapping(value="StudentByName_v",method = RequestMethod.GET)
     public String findStudent_v(Model model,HttpServletRequest request, String name,
                               @Validated Student student, BindingResult bindingResult){
 
@@ -122,7 +122,7 @@ public class StudentController {
         //System.out.println(studentList);
         //addAttribute提交到前台,视图层才能显示数据
         model.addAttribute(studentList);
-        return "select";
+        return "ChosenOne";
     }
 
     //用jsontaglib返回查询一个人
@@ -139,14 +139,14 @@ public class StudentController {
     }
 
     //删除
-    @RequestMapping(value = "deleteStudent/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "StudentLesser/{id}",method = RequestMethod.DELETE)
     public String deleteStudent(@PathVariable long id,@Validated Student student,BindingResult result){
         studentService.deleteStudent(id);
         log.info("1");
-        return "redirect:findAllStudent";
+        return "redirect:/AllStudent";
     }
 
-    @RequestMapping(value = "findAllStudent",
+    @RequestMapping(value = "AllStudent",
             method =RequestMethod.GET)
     public String findAllStudent(Model model,
             @RequestParam(defaultValue = "1",required = true,value = "pageNo")Integer pageNo)  {
@@ -157,7 +157,7 @@ public class StudentController {
         log.error(studentList);
         PageInfo<Student> pageInfo =new PageInfo<Student>(studentList);
         model.addAttribute("pageInfo",pageInfo);
-        return "studentInfo";
+        return "AllStudent";
     }
     //测试ResponseBody
     @RequestMapping("testJ")
