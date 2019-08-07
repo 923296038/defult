@@ -35,8 +35,17 @@
 
 
     <!--校验器注入处理器适配器中-->
-    <mvc:annotation-driven  validator="validator"/>
-
+    <mvc:annotation-driven   validator="validator"/>
+    <!--conversion-service="conversionService"-->
+    <!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        &lt;!&ndash; 转换器 &ndash;&gt;
+        <property name="converters">
+            <list>
+                &lt;!&ndash; 日期类型转换 &ndash;&gt;
+                <bean class="com.timeUtil.LongConverter"/>
+            </list>
+        </property>
+    </bean>-->
     <!--配置校验器 start-->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <!-- hibernate校验器 -->

@@ -52,14 +52,15 @@
          <td>${student.qq}</td>
          <td>${student.learn_type}</td>
          <td><date:date value ="${student.entrance_time} "/></td>
+<%--         <td>${student.entrance_time} </td>--%>
          <td>${student.school}</td>
          <td>${student.id}</td>
          <td>${student.daily_link}</td>
          <td>${student.wish}</td>
          <td>${student.senior}</td>
          <td>${student.way}</td>
-<%--         <td><date:date value ="${student.create_time} "/></td>--%>
-<%--         <td><date:date value ="${student.update_time} "/></td>--%>
+         <td><date:date value ="${student.create_time} "/></td>
+         <td><date:date value ="${student.update_time} "/></td>
 
              <%--点击编辑时,会将这一条数据的id信息传入控制层的toUpdate方法
              toUpdate方法中,会按这个id去查询,返回这条数据信息--%>
@@ -78,14 +79,16 @@
 <center>
 <p>当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
     页,总 ${pageInfo.total } 条记录</div></p>
-<a href="/findAllStudent?pageNo=${pageInfo.firstPage}">首页</a>
+<a href="/AllStudent?pageNo=${pageInfo.firstPage}">首页</a>
 <c:if test="${pageInfo.hasPreviousPage }">
-    <a href="/findAllStudent?pageNo=${pageInfo.pageNum-1}">上一页</a>
+    <a href="/AllStudent?pageNo=${pageInfo.pageNum-1}">上一页</a>
 </c:if>
 <c:if test="${pageInfo.hasNextPage }">
-    <a href="/findAllStudent?pageNo=${pageInfo.pageNum+1}">下一页</a>
+    <a href="/AllStudent?pageNo=${pageInfo.pageNum+1}">下一页</a>
 </c:if>
-<a href="/findAllStudent?pageNo=${pageInfo.lastPage}">最后页</a>
+<a href="/AllStudent?pageNo=${pageInfo.lastPage}">最后一页</a>
+
+
 </center>
 </body>
 </html>

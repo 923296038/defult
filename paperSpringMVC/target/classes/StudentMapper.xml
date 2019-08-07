@@ -27,7 +27,9 @@
     <!-- 更新数据-->
     <update id="updateStudent" parameterType="student">
         UPDATE student
-        set name=#{name},qq=#{qq},learn_type=#{learn_type},school=#{school},wish=#{wish} WHERE id=#{id}
+        set name=#{name},qq=#{qq},learn_type=#{learn_type},entrance_time=#{entrance_time},school=#{school},
+        daily_link=#{daily_link},wish=#{wish},senior=#{senior},way=#{way},update_time=#{update_time}
+        WHERE id=#{id}
     </update>
 
     <resultMap id="StudentResultMap" type="com.pojo.Student">

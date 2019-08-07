@@ -40,9 +40,15 @@
     <form name="studentForm" action="<%=basePath%>/StudentInfo"
           method="post" >
         <input type="hidden" name="id" value="${student.id}"/>
-        name：<input type="text" name="name" value="${student.name}"/>
-<%--        wish：<input type="text" name="paperNum" value="${student.wish}"/>--%>
-<%--        school：<input type="text" name="paperDetail" value="${student.school}"/>--%>
+        name：<input type="text" name="name" value="${student.name}"/><br><br>
+        qq:     <input type="text" name="qq" value="${student.qq}"> <br><br>
+        专业:     <input type="text" name="learn_type" value="${student.learn_type}"><br><br>
+        入学时间:   <input type="text" name="entrance_time" value="${student.entrance_time}">请输入纯数字格式,如20190803<br><br>
+        毕业学校:    <input type="text" name="school" value="${student.school}"><br><br>
+        日报链接:    <input type="text" name="daily_link" value="${student.daily_link}"><br><br>
+        立愿:       <input type="text" name="wish" value="${student.wish}"><br><br>
+        师兄:      <input type="text" name="senior"value="${student.senior}"><br><br>
+        渠道:     <input type="text" name="way"value="${student.way}"><br><br>
         <input type="submit" value="提交" />
         <c:if test="${allErrors != null }">
             <c:forEach items="${allErrors }" var="error">

@@ -35,12 +35,30 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, int qq, String learn_type, long entrance_time, String school, String daily_link, String wish, String senior, String way, long create_time, long update_time) {
+    public Student(String name, int qq, String learn_type, long entrance_time, String school,
+                   String daily_link, String wish, String senior, String way, long create_time, long update_time) {
         this.name = name;
         this.qq = qq;
         this.learn_type = learn_type;
         this.entrance_time = entrance_time;
         this.school = school;
+        this.daily_link = daily_link;
+        this.wish = wish;
+        this.senior = senior;
+        this.way = way;
+        this.create_time = create_time;
+        this.update_time = update_time;
+    }
+
+    public Student(String name, int qq, String learn_type, long entrance_time, String school,
+                   long id, String daily_link, String wish, String senior, String way, long create_time,
+                   long update_time) {
+        this.name = name;
+        this.qq = qq;
+        this.learn_type = learn_type;
+        this.entrance_time = entrance_time;
+        this.school = school;
+        this.id = id;
         this.daily_link = daily_link;
         this.wish = wish;
         this.senior = senior;

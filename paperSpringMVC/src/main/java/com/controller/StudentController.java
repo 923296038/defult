@@ -49,6 +49,8 @@ public class StudentController {
 
     @RequestMapping(value = "StudentMore")
     public ModelAndView addStudent(Student student) {
+        student.setCreate_time(System.currentTimeMillis()/1000);
+        student.setUpdate_time(System.currentTimeMillis()/1000);
         studentService.insertStudent(student);
         ModelAndView mav = new ModelAndView
                 ("redirect:/AllStudent");
@@ -65,17 +67,17 @@ public class StudentController {
             (Model model,@PathVariable long id){
         //先获得原数据才能更改
         Student student=studentService.findStudentById(id);
+        log.error(student.getUpdate_time());
         //model.addAttibute 往前台传数据
         model.addAttribute("student",student);
-        log.info("1");
         return "StudentInfo";
     }
 
     @RequestMapping(value = "StudentInfo",
             method = RequestMethod.POST)
     public String updateStudent(Student student){
+        student.setUpdate_time(System.currentTimeMillis()/1000);
         studentService.updateStudent(student);
-        log.info("1");
         return "redirect:AllStudent";
     }
 
@@ -146,13 +148,12 @@ public class StudentController {
         return "redirect:/AllStudent";
     }
 
-    @RequestMapping(value = "AllStudent",
-            method =RequestMethod.GET)
+    @RequestMapping(value = "AllStudent", method =RequestMethod.GET)
     public String findAllStudent(Model model,
-            @RequestParam(defaultValue = "1",required = true,value = "pageNo")Integer pageNo)  {
+            @RequestParam(defaultValue = "1",required = true,
+                    value = "pageNo") Integer pageNo)  {
         Integer pageSize=5;//每页显示记录数为5
         PageHelper.startPage(pageNo,pageSize);
-        log.info("1");
         List<Student>studentList=studentService.findAllStudent();//获取所有用户信息
         log.error(studentList);
         PageInfo<Student> pageInfo =new PageInfo<Student>(studentList);

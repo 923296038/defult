@@ -43,10 +43,17 @@
         </div>
     </div>
     <form action="" name="userForm">
-        name：<input type="text" name="name"><br><br><br>
-<%--        论文数量：<input type="text" name="paperNum"><br><br><br>--%>
-<%--        论文详情：<input type="text" name="paperDetail"><br><br><br>--%>
-<%--        <input type="button" value="添加" onclick="addPaper()">--%>
+        name： <input type="text" name="name"><br><br>
+        qq:     <input type="text" name="qq"><br><br>
+        专业:     <input type="text" name="learn_type"><br><br>
+        入学时间:   <input type="text" name="entrance_time">时间戳<br><br>
+        毕业学校:    <input type="text" name="school"><br><br>
+        日报链接:    <input type="text" name="daily_link"><br><br>
+        立愿:       <input type="text" name="wish"><br><br>
+        师兄:      <input type="text" name="senior"><br><br>
+        渠道:     <input type="text" name="way"><br><br>
+<%--        创建时间: <input type="text" name="create_time">时间戳<br><br>--%>
+<%--        修改时间:<input type="text" name="update_time">时间戳<br><br>--%>
         <input type="button" value="添加" onclick="addStudent()">
     </form>
 
