@@ -6,7 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.StudentService;
 import com.pojo.Student;
-import com.timeUtil.StringUtil;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +24,8 @@ import java.util.List;
 
 @Controller
 public class StudentController {
-    @Autowired
-    StringUtil stringUtil;
+//    @Autowired
+//    StringUtil stringUtil;
     @Autowired
     StudentService studentService;
     private static final Logger log= LogManager.getLogger(StudentController.class);
@@ -46,65 +46,10 @@ public class StudentController {
         model.addAttribute("student",student);
         return "redirect:/findAllStudent";
     }*/
-
-    @RequestMapping(value = "StudentMore")
-    public ModelAndView addStudent(Student student) {
-        student.setCreate_time(System.currentTimeMillis()/1000);
-        student.setUpdate_time(System.currentTimeMillis()/1000);
-        studentService.insertStudent(student);
-        ModelAndView mav = new ModelAndView
-                ("redirect:/AllStudent");
-        log.info("1");
-        return mav;
-    }
-
-    /**
-     参数model是什么意思?
-     */
-    @RequestMapping(value="toStudentInfo/{id}",
-            method = RequestMethod.GET)
-    public String toUpdateStudent
-            (Model model,@PathVariable long id){
-        //先获得原数据才能更改
-        Student student=studentService.findStudentById(id);
-        log.error(student.getUpdate_time());
-        //model.addAttibute 往前台传数据
-        model.addAttribute("student",student);
-        return "StudentInfo";
-    }
-
-    @RequestMapping(value = "StudentInfo",
-            method = RequestMethod.POST)
-    public String updateStudent(Student student){
-        student.setUpdate_time(System.currentTimeMillis()/1000);
-        studentService.updateStudent(student);
-        return "redirect:AllStudent";
-    }
-
-    //查询一个学生
-    @RequestMapping(value="StudentById",method = RequestMethod.GET)
-    public String findStudent(Model model, String name,
-              @Validated Student student, BindingResult result){
-        if (name==null && result.hasErrors()){
-            List<ObjectError>allErrors=result.getAllErrors();
-            for (ObjectError objectError:allErrors) {
-                System.out.println(objectError.getDefaultMessage());
-            }
-            model.addAttribute("errors",allErrors);
-            return "/error.jsp";
-        }
-        List<Student> studentList=studentService.findStudentByName(name);
-        //System.out.println(studentList);
-        //addAttribute提交到前台,视图层才能显示数据
-        model.addAttribute(studentList);
-        log.info("1");
-        return "ChosenOne";
-    }
-
-    //查询,带校验
+//查询,带校验
     //bindingResult接受错误
-    @RequestMapping(value="StudentByName_v",method = RequestMethod.GET)
-    public String findStudent_v(Model model,HttpServletRequest request, String name,
+    @RequestMapping(value="StudentByName",method = RequestMethod.GET)
+    public String findStudent(Model model,HttpServletRequest request, String name,
                               @Validated Student student, BindingResult bindingResult){
 
         if(name.length()==0&& bindingResult.hasErrors()){
@@ -126,6 +71,84 @@ public class StudentController {
         model.addAttribute(studentList);
         return "ChosenOne";
     }
+
+    @RequestMapping(value = "StudentMore")
+    public String addStudent(Model model,HttpServletRequest request,@Validated Student student,BindingResult bindingResult) {
+        if(student.getName().length()==0||student.getStudent_id()<1||bindingResult.hasErrors()){
+            //输出错误信息
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            for (ObjectError objectError:allErrors){
+                log.error(objectError.getDefaultMessage());
+            }
+            //将错误信息传至页面
+            model.addAttribute("allErrors",allErrors);
+            //出错则重新至商品更新页面
+            log.error("执行了if语句块");
+            return "error";
+        }
+        log.error(bindingResult+  "学生姓名是"+  student.getName()+"|");
+        student.setCreate_time(System.currentTimeMillis());
+        student.setUpdate_time(System.currentTimeMillis());
+        studentService.insertStudent(student);
+        log.info(student);
+        return "AllStudent";
+    }
+
+    /**
+     参数model是什么意思?
+     */
+    @RequestMapping(value="toStudentInfo/{id}",
+            method = RequestMethod.GET)
+    public String toUpdateStudent
+            (Model model,@PathVariable long id){
+        //先获得原数据才能更改
+        Student student=studentService.findStudentById(id);
+        log.error(student.getUpdate_time());
+        //model.addAttibute 往前台传数据
+        model.addAttribute("student",student);
+        return "StudentInfo";
+    }
+
+    @RequestMapping(value = "StudentInfo",
+            method = RequestMethod.POST)
+    public String updateStudent(Model model,HttpServletRequest request,@Validated Student student,BindingResult bindingResult){
+        if(student.getName().length()==0||student.getStudent_id()<1||bindingResult.hasErrors()){
+//输出错误信息
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            for (ObjectError objectError:allErrors){
+                log.error(objectError.getDefaultMessage());
+            }
+//将错误信息传至页面
+            model.addAttribute("allErrors",allErrors);
+//出错则重新至商品更新页面
+            log.error("执行了if语句块");
+            return "error";
+        }
+        student.setUpdate_time(System.currentTimeMillis());
+        studentService.updateStudent(student);
+        return "redirect:AllStudent";
+    }
+
+    //查询一个学生
+    @RequestMapping(value="StudentById",method = RequestMethod.GET)
+    public String findStudent(Model model, String name,
+              @Validated Student student, BindingResult result){
+        if (name==null && result.hasErrors()){
+            List<ObjectError>allErrors=result.getAllErrors();
+            for (ObjectError objectError:allErrors) {
+                System.out.println(objectError.getDefaultMessage());
+            }
+            model.addAttribute("errors",allErrors);
+            return "/error.jsp";
+        }
+        List<Student> studentList=studentService.findStudentByName(name);
+        //System.out.println(studentList);
+        //addAttribute提交到前台,视图层才能显示数据
+        model.addAttribute(studentList);
+        return "ChosenOne";
+    }
+
+
 
     //用jsontaglib返回查询一个人
     //通过@ResponseBody注解的方式,方法返回的对象不会经过视图解析器的渲染
@@ -155,18 +178,21 @@ public class StudentController {
         Integer pageSize=5;//每页显示记录数为5
         PageHelper.startPage(pageNo,pageSize);
         List<Student>studentList=studentService.findAllStudent();//获取所有用户信息
-        log.error(studentList);
+
         PageInfo<Student> pageInfo =new PageInfo<Student>(studentList);
         model.addAttribute("pageInfo",pageInfo);
         return "AllStudent";
     }
     //测试ResponseBody
-    @RequestMapping("testJ")
+    @RequestMapping("testJson")
     @ResponseBody
     public HashMap testJ()
     {
         HashMap s = new HashMap();
         s.put("student.id ", "1");
+        s.put("student.name ", "王全");
+        s.put("student.school ", "hbpu");
+        s.put("student.major ", "java");
         return s;
     }
     //测试Json Tag-lib
@@ -174,6 +200,7 @@ public class StudentController {
     public String json(){
         return "json";
     }
+
     //测试post
     @ResponseBody
     @PostMapping("postID")
@@ -184,12 +211,16 @@ public class StudentController {
     }
 
     //使用json tag-lib生成假数据.
-    @RequestMapping("select")
+    @RequestMapping("testJson2")
     public String selectAll(Model model) {
         List<Student> students = studentService.findAllStudent();
         model.addAttribute("code", "200");
         model.addAttribute("message", "传递成功");
         model.addAttribute("students", students);
         return "json";
+    }
+    @RequestMapping("toError")
+    public String toError(){
+        return "error";
     }
 }

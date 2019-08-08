@@ -17,9 +17,11 @@ public class Student {
      */
 //    @NotBlank(message = "学生姓名不能为空")
 
-    @NotBlank(message = "姓名不为空")
+    @NotBlank(message = "姓名不能为空")
     private String name;
-    private int qq;
+    @NotNull(message = "学号不为空")
+    private long student_id;
+    private long qq;
     private String learn_type;
     private long entrance_time;
     private String school;
@@ -35,9 +37,9 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, int qq, String learn_type, long entrance_time, String school,
-                   String daily_link, String wish, String senior, String way, long create_time, long update_time) {
+    public Student(String name, long student_id, long qq, String learn_type, long entrance_time, String school, String daily_link, String wish, String senior, String way, long create_time, long update_time) {
         this.name = name;
+        this.student_id = student_id;
         this.qq = qq;
         this.learn_type = learn_type;
         this.entrance_time = entrance_time;
@@ -50,10 +52,9 @@ public class Student {
         this.update_time = update_time;
     }
 
-    public Student(String name, int qq, String learn_type, long entrance_time, String school,
-                   long id, String daily_link, String wish, String senior, String way, long create_time,
-                   long update_time) {
+    public Student(String name, long student_id,long qq, String learn_type, long entrance_time, String school, long id, String daily_link, String wish, String senior, String way, long create_time, long update_time) {
         this.name = name;
+        this.student_id = student_id;
         this.qq = qq;
         this.learn_type = learn_type;
         this.entrance_time = entrance_time;
@@ -75,11 +76,19 @@ public class Student {
         this.name = name;
     }
 
-    public int getQq() {
+    public long getStudent_id() {
+        return student_id;
+    }
+
+    public void setStudent_id(long student_id) {
+        this.student_id = student_id;
+    }
+
+    public long getQq() {
         return qq;
     }
 
-    public void setQq(int qq) {
+    public void setQq(long qq) {
         this.qq = qq;
     }
 

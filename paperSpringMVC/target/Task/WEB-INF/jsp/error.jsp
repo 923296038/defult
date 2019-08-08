@@ -19,6 +19,7 @@
         ${Error.defaultMessage}
     </c:forEach>
 </c:if>
+<a href="/AllStudent">返回所有学生</a>
 
 <%--&lt;%&ndash;json接受&ndash;%&gt;--%>
 <%--<json:object>--%>

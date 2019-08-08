@@ -1,91 +1,60 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Mr_Wang
-  Date: 2018/9/25
-  Time: 18:35
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"  import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
-<% String path=request.getContextPath();
-    String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-<%@ taglib uri="/tags" prefix="date"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";%>
 <html>
 <head>
-    <base href="<%=basePath%>">
-    <title>学生列表</title>
+    <title>修改论文</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h2><a href="<%=basePath%>/toAddStudent">添加用户</a> </h2>
-<c:if test="${allErrors != null }">
-    <c:forEach items="${allErrors }" var="error">
-        <font color="red" >${ error.defaultMessage}</font>
-    </c:forEach>
-</c:if>
-<%--${pageContext.request.contextPath}是绝对路径--%>
-<form action="<%=basePath%>/findStudent_v" method="GET">
-    <label for="name">姓名：</label>
-    <input id="name" name="name">
-    <input type="submit" value="查询"/>
-</form>
-<table width="100%" border="1">
- <tbody>
-  <tr>
-      <th>姓名</th>
-      <th>QQ</th>
-      <th>学习类型</th>
-      <th>入学时间</th>
-      <th>毕业院校</th>
-      <th>ID</th>
-      <th>日报链接</th>
-      <th>愿望</th>
-      <th>师兄</th>
-      <th>方式</th>
-      <th>表格创建时间</th>
-      <th>表格更新时间</th>
-  </tr>
-  <%--传入数据--%>
- <c:forEach items="${pageInfo.list}" var="student" >
-     <tr>
-         <td>${student.name}</td>
-         <td>${student.qq}</td>
-         <td>${student.learn_type}</td>
-         <td><date:date value ="${student.entrance_time} "/></td>
-         <td>${student.school}</td>
-         <td>${student.id}</td>
-         <td>${student.daily_link}</td>
-         <td>${student.wish}</td>
-         <td>${student.senior}</td>
-         <td>${student.way}</td>
-<%--         <td><date:date value ="${student.create_time} "/></td>--%>
-<%--         <td><date:date value ="${student.update_time} "/></td>--%>
-
-             <%--点击编辑时,会将这一条数据的id信息传入控制层的toUpdate方法
-             toUpdate方法中,会按这个id去查询,返回这条数据信息--%>
-
-             <%--         修改了路径.改成了<%=basePath%>/>--%>
-         <td><a href="<%=basePath%>/toUpdateStudent/${student.id}">编辑</a></td>
-         <td><form action="<%=basePath%>/deleteStudent/${student.id}" method="post">
-<%--         <td><form action="${pageContext.request.contextPath}/deleteStudent/{id}" method="post">--%>
-             <input type="hidden" name="_method" value="DELETE">
-             <input TYPE="submit" value="删除"></form>
-         </td>
-     </tr>
- </c:forEach>
- </tbody>
-</table>
-<center>
-<p>当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
-    页,总 ${pageInfo.total } 条记录</div></p>
-<a href="/findAllStudent?pageNo=${pageInfo.firstPage}">首页</a>
-<c:if test="${pageInfo.hasPreviousPage }">
-    <a href="/findAllStudent?pageNo=${pageInfo.pageNum-1}">上一页</a>
-</c:if>
-<c:if test="${pageInfo.hasNextPage }">
-    <a href="/findAllStudent?pageNo=${pageInfo.pageNum+1}">下一页</a>
-</c:if>
-<a href="/findAllStudent?pageNo=${pageInfo.lastPage}">最后页</a>
-</center>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    基于SSM框架的管理系统：简单实现增、删、改、查。
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>修改论文</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <%--action指向方法url
+    id是原数据的id,输入框中输入name
+    点击提交后,submit,参数传入updateStudent方法
+    --%>
+    <form name="studentForm" action="<%=basePath%>/StudentInfo"
+          method="post" >
+        <input type="hidden" name="id" value="${student.id}"/>
+        name：<input type="text" name="name" value="${student.name}"/><br><br>
+        qq:     <input type="text" name="qq" value="${student.qq}"> <br><br>
+        专业:     <input type="text" name="learn_type" value="${student.learn_type}"><br><br>
+        入学时间:   <input type="text" name="entrance_time" value="${student.entrance_time}">请输入纯数字格式,如20190803<br><br>
+        毕业学校:    <input type="text" name="school" value="${student.school}"><br><br>
+        日报链接:    <input type="text" name="daily_link" value="${student.daily_link}"><br><br>
+        立愿:       <input type="text" name="wish" value="${student.wish}"><br><br>
+        师兄:      <input type="text" name="senior"value="${student.senior}"><br><br>
+        渠道:     <input type="text" name="way"value="${student.way}"><br><br>
+        <input type="submit" value="提交" />
+        <c:if test="${allErrors != null }">
+            <c:forEach items="${allErrors }" var="error">
+                <font color="red" >${ error.defaultMessage}</font>
+            </c:forEach>
+        </c:if>
+    </form>
+</div>
 </body>
-</html>

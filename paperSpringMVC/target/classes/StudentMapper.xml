@@ -5,8 +5,8 @@
 <mapper namespace="com.mapper.StudentMapper">
     <!--插入数据-->
     <insert id="insertStudent" parameterType="student" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO student (name,qq,learn_type,entrance_time,school,daily_link,wish,senior,way,create_time,update_time)
-        VALUES (#{name},#{qq},#{learn_type},
+        INSERT INTO student (name,student_id,qq,learn_type,entrance_time,school,daily_link,wish,senior,way,create_time,update_time)
+        VALUES (#{name},#{student_id},#{qq},#{learn_type},
                 #{entrance_time},
                 #{school},
                 #{daily_link},
@@ -27,15 +27,16 @@
     <!-- 更新数据-->
     <update id="updateStudent" parameterType="student">
         UPDATE student
-        set name=#{name},qq=#{qq},learn_type=#{learn_type},entrance_time=#{entrance_time},school=#{school},
+        set name=#{name},student_id=#{student_id},qq=#{qq},learn_type=#{learn_type},entrance_time=#{entrance_time},school=#{school},
         daily_link=#{daily_link},wish=#{wish},senior=#{senior},way=#{way},update_time=#{update_time}
         WHERE id=#{id}
     </update>
 
     <resultMap id="StudentResultMap" type="com.pojo.Student">
         <id property="id" column="id" javaType="java.lang.Long"/>
+        <result property="student_id" column="student_id" javaType="java.lang.Long"/>
         <result property="name" column="name" javaType="java.lang.String"/>
-        <result property="qq" column="qq" javaType="java.lang.Integer"/>
+        <result property="qq" column="qq" javaType="java.lang.Long"/>
         <result property="learn_type" column="learn_type" javaType="java.lang.String"/>
         <result property="entrance_time" column="entrance_time" javaType="java.lang.Long"/>
         <result property="school" column="school" javaType="java.lang.String"/>

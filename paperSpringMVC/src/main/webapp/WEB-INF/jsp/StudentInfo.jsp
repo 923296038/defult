@@ -41,6 +41,7 @@
           method="post" >
         <input type="hidden" name="id" value="${student.id}"/>
         name：<input type="text" name="name" value="${student.name}"/><br><br>
+        学号：<input type="text" name="student_id" value="${student.student_id}"/><br><br>
         qq:     <input type="text" name="qq" value="${student.qq}"> <br><br>
         专业:     <input type="text" name="learn_type" value="${student.learn_type}"><br><br>
         入学时间:   <input type="text" name="entrance_time" value="${student.entrance_time}">请输入纯数字格式,如20190803<br><br>

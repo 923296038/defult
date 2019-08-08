@@ -24,7 +24,7 @@
     </c:forEach>
 </c:if>
 <%--${pageContext.request.contextPath}是绝对路径--%>
-<form action="<%=basePath%>/StudentByName_v" method="GET">
+<form action="<%=basePath%>/StudentByName" method="GET">
     <label for="name">姓名：</label>
     <input id="name" name="name">
     <input type="submit" value="查询"/>
@@ -33,11 +33,11 @@
  <tbody>
   <tr>
       <th>姓名</th>
+      <th>学号</th>
       <th>QQ</th>
       <th>学习类型</th>
       <th>入学时间</th>
       <th>毕业院校</th>
-      <th>ID</th>
       <th>日报链接</th>
       <th>愿望</th>
       <th>师兄</th>
@@ -49,12 +49,11 @@
  <c:forEach items="${pageInfo.list}" var="student" >
      <tr>
          <td>${student.name}</td>
+         <td>${student.student_id}</td>
          <td>${student.qq}</td>
          <td>${student.learn_type}</td>
          <td><date:date value ="${student.entrance_time} "/></td>
-<%--         <td>${student.entrance_time} </td>--%>
          <td>${student.school}</td>
-         <td>${student.id}</td>
          <td>${student.daily_link}</td>
          <td>${student.wish}</td>
          <td>${student.senior}</td>
@@ -79,14 +78,17 @@
 <center>
 <p>当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
     页,总 ${pageInfo.total } 条记录</div></p>
-<a href="/AllStudent?pageNo=${pageInfo.firstPage}">首页</a>
+<a href="/AllStudent?pageNo=${pageInfo.firstPage}">1</a>
+
+<a href="/AllStudent?pageNo=${pageInfo.firstPage+1}">2</a>
+
 <c:if test="${pageInfo.hasPreviousPage }">
     <a href="/AllStudent?pageNo=${pageInfo.pageNum-1}">上一页</a>
 </c:if>
 <c:if test="${pageInfo.hasNextPage }">
     <a href="/AllStudent?pageNo=${pageInfo.pageNum+1}">下一页</a>
 </c:if>
-<a href="/AllStudent?pageNo=${pageInfo.lastPage}">最后一页</a>
+<a href="/AllStudent?pageNo=${pageInfo.lastPage}">${pageInfo.lastPage}</a>
 
 
 </center>

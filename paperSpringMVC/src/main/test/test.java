@@ -5,15 +5,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-
 import java.util.List;
-
+@Controller
 public class test {
     private static final Logger log= LogManager.getLogger(test.class);
-    @Autowired
-    StudentService studentService;
+    ApplicationContext context=new
+            ClassPathXmlApplicationContext("applicationContext.xml");
+    StudentService studentService= (StudentService) context.getBean("studentService");
     @Test
     public void testInsert(){
         Student student1 = new Student("insert",123,"java",201907,"hbpu",
@@ -22,7 +24,7 @@ public class test {
     }
     @Test
     public void testDelete(){
-        studentService.deleteStudent(102);
+        studentService.deleteStudent(155);
     }
     @Test
     public void testUpdate(){

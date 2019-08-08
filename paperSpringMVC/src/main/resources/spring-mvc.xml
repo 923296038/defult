@@ -42,7 +42,7 @@
         <property name="converters">
             <list>
                 &lt;!&ndash; 日期类型转换 &ndash;&gt;
-                <bean class="com.timeUtil.LongConverter"/>
+                <bean class="com.converter.LongConverter"/>
             </list>
         </property>
     </bean>-->

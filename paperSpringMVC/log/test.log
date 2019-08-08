@@ -1,12 +1,6 @@
-09:55:25.116 ERROR com.controller.StudentController 158 findAllStudent - Page{count=true, pageNum=1, pageSize=5, startRow=0, endRow=5, total=1, pages=1, reasonable=true, pageSizeZero=false}
-09:55:27.840 ERROR com.controller.StudentController 70 toUpdateStudent - 1565142739
-09:55:30.257 ERROR com.controller.StudentController 158 findAllStudent - Page{count=true, pageNum=1, pageSize=5, startRow=0, endRow=5, total=1, pages=1, reasonable=true, pageSizeZero=false}
-09:55:33.490 ERROR com.controller.StudentController 70 toUpdateStudent - 1565142930
-09:55:35.314 ERROR com.controller.StudentController 158 findAllStudent - Page{count=true, pageNum=1, pageSize=5, startRow=0, endRow=5, total=1, pages=1, reasonable=true, pageSizeZero=false}
-09:56:43.809 ERROR com.controller.StudentController 158 findAllStudent - Page{count=true, pageNum=0, pageSize=5, startRow=0, endRow=0, total=0, pages=0, reasonable=true, pageSizeZero=false}
-09:57:42.093 ERROR com.controller.StudentController 158 findAllStudent - Page{count=true, pageNum=1, pageSize=5, startRow=0, endRow=5, total=1, pages=1, reasonable=true, pageSizeZero=false}
-09:57:51.742 ERROR com.controller.StudentController 122 findStudent_v - org.springframework.validation.BeanPropertyBindingResult: 0 errors
-09:57:55.262 ERROR com.controller.StudentController 114 findStudent_v - 姓名不为空
-09:57:55.263 ERROR com.controller.StudentController 119 findStudent_v - org.springframework.validation.BeanPropertyBindingResult: 1 errors
-Field error in object 'student' on field 'name': rejected value []; codes [NotBlank.student.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [student.name,name]; arguments []; default message [name]]; default message [姓名不为空]
-09:57:56.810 ERROR com.controller.StudentController 158 findAllStudent - Page{count=true, pageNum=1, pageSize=5, startRow=0, endRow=5, total=1, pages=1, reasonable=true, pageSizeZero=false}
+11:23:21.620 ERROR com.controller.StudentController 106 toUpdateStudent - 1565231312206
+11:23:25.622 ERROR com.controller.StudentController 119 updateStudent - Failed to convert property value of type 'java.lang.String' to required type 'long' for property 'student_id'; nested exception is java.lang.NumberFormatException: For input string: ""
+11:23:25.622 ERROR com.controller.StudentController 124 updateStudent - 执行了if语句块
+11:23:29.012 ERROR com.controller.StudentController 106 toUpdateStudent - 1565231312206
+11:23:31.627 ERROR com.controller.StudentController 119 updateStudent - 姓名不能为空
+11:23:31.627 ERROR com.controller.StudentController 124 updateStudent - 执行了if语句块

@@ -44,6 +44,7 @@
     </div>
     <form action="" name="userForm">
         name： <input type="text" name="name"><br><br>
+        学号:   <input title="text" name="student_id"><br><br>
         qq:     <input type="text" name="qq"><br><br>
         专业:     <input type="text" name="learn_type"><br><br>
         入学时间:   <input type="text" name="entrance_time">时间戳<br><br>
