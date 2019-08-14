@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    <!--    <context:component-scan base-package="com.controller">-->
+    <!--    </context:component-scan>-->
+    <context:component-scan base-package="com.controller" />
+
+
+
+
+    <!-- 2.静态资源默认servlet配置
+        (1)加入对静态资源的处理：js,gif,png
+        (2)允许使用"/"做整体映射
+     -->
+
+
+    <!-- 3.配置jsp 显示ViewResolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <!--        <property name="prefix" value="/"/>-->
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <mvc:default-servlet-handler/>
+
+
+
+    <!--校验器注入处理器适配器中-->
+    <mvc:annotation-driven   validator="validator"/>
+    <!--conversion-service="conversionService"-->
+    <!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        &lt;!&ndash; 转换器 &ndash;&gt;
+        <property name="converters">
+            <list>
+                &lt;!&ndash; 日期类型转换 &ndash;&gt;
+                <bean class="com.converter.LongConverter"/>
+            </list>
+        </property>
+    </bean>-->
+    <!--配置校验器 start-->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <!-- hibernate校验器 -->
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <!-- 指定校验使用的资源文件，在文件中配置校验错误信息,如不指定，则默认classpath下的validationMessage.properties文件 -->
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+    <!-- 校验错误信息配置文件 -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <!-- 资源文件名 -->
+        <property name="basenames">
+            <list>
+                <!-- 配置错误信息文件 CustomValidationMessages.properties-->
+                <value>classpath:CustomValidationMessages</value>
+            </list>
+        </property>
+        <!-- 解决中文乱码 -->
+        <property name="defaultEncoding" value="utf-8"></property>
+        <!-- 资源文件编码格式 -->
+        <property name="fileEncodings" value="utf-8"></property>
+        <!-- 资源文件缓存时间 -->
+        <property name="cacheSeconds" value="120"></property>
+    </bean>
+    <!--配置校验器 end-->
+
+    <!-- 4.扫描web相关的bean -->
+
+</beans>

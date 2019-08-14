@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ModuleMapper">
+
+    <insert id="insertModule" parameterType="com.pojo.Module">
+        insert into modules
+        (module_name,parent_node_id,url)
+        values
+        (#{module_name},#{parent_node_id},#{url})
+    </insert>
+
+    <update id="updateModule" parameterType="com.pojo.Module">
+        update modules
+        set module_name=#{module_name},parent_node_id=#{parent_node_id},
+        url=#{url}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteModule">
+        delete from modules
+        where id=#{id}
+    </delete>
+
+    <resultMap id="ModuleResultMap" type="com.pojo.Module">
+        <id property="id" column="id" javaType="Long"/>
+        <result property="module_name" column="module_name" javaType="String"/>
+        <result property="parent_node_id" column="parent_node_id" javaType="Long"/>
+        <result property="url" column="url" javaType="String"/>
+        <result property="create_at" column="create_at" javaType="Long"/>
+        <result property="create_by" column="create_by" javaType="String"/>
+    </resultMap>
+
+    <select id="findByModuleName" parameterType="String" resultMap="ModuleResultMap">
+        select * from modules
+        where module_name=#{module_name}
+    </select>
+
+    <select id="findAll" resultMap="ModuleResultMap">
+        select * from modules
+    </select>
+</mapper>

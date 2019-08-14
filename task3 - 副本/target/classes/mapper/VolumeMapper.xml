@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.VolumeMapper">
+
+    <insert id="insertVolume" parameterType="Volume">
+        insert into volumes
+        (volume_name,status,create_at,update_at,update_by)
+        values (#{volume_name},#{status},#{create_at},
+        #{update_at},#{update_by})
+    </insert>
+    <update id="updateVolume" parameterType="Volume">
+        update volumes set
+        volume_name=#{volume_name},status=#{status},create_at=#{create_at},
+        update_at=#{update_at},update_by=#{update_by}
+        where id=#{id}
+    </update>
+    <update id="upVolume" parameterType="Long">
+        update volumes set
+        status="上架" where id = #{id}
+    </update>
+    <update id="downVolume" parameterType="Long">
+        update volumes set
+        status="下架" where id = #{id}
+    </update>
+    <delete id="deleteVolume" parameterType="Long">
+        delete from volumes where id = #{id}
+    </delete>
+    <resultMap id="VolumeRM" type="com.pojo.Volume">
+        <id property="id" column="id" javaType="Long"/>
+        <result property="volume_name" column="volume_name" javaType="String"/>
+        <result property="status" column="status" javaType="String"/>
+        <result property="create_at" column="create_at" javaType="Long"/>
+        <result property="update_at" column="update_at" javaType="Long"/>
+        <result property="update_by" column="update_by" javaType="String"/>
+    </resultMap>
+    <select id="findByName" parameterType="String" resultMap="VolumeRM">
+        select * from volumes where volume_name=#{volume_name}
+    </select>
+    <select id="findAll" resultMap="VolumeRM">
+        select * from volumes
+    </select>
+</mapper>

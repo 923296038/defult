@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.BannerMapper">
+
+    <insert id="insertBanner" parameterType="com.pojo.Banner">
+insert into banners
+(create_by,url,status,create_at,update_at)
+values
+(#{create_by},#{url},#{status},#{create_at},#{update_at})
+</insert>
+
+    <update id="updateBanner" parameterType="com.pojo.Banner">
+update banners
+set create_by=#{create_by},url=#{url},
+status=#{status},create_at=#{create_at},update_at=#{update_at}
+where id=#{id}
+</update>
+
+    <delete id="deleteBanner">
+delete from banners
+where id=#{id}
+</delete>
+
+    <resultMap id="BannerResultMap" type="com.pojo.Banner">
+        <id property="id" column="id" javaType="Long"/>
+        <result property="create_by" column="create_by" javaType="String"/>
+        <result property="url" column="url" javaType="String"/>
+        <result property="status" column="status" javaType="String"/>
+        <result property="create_at" column="create_at" javaType="Long"/>
+        <result property="update_at" column="update_at" javaType="Long"/>
+    </resultMap>
+
+    <select id="findByName" parameterType="String" resultMap="BannerResultMap">
+select * from banners
+where create_by=#{create_by}
+</select>
+
+    <select id="findAllBanner" resultMap="BannerResultMap">
+select * from banners
+</select>
+
+    <update id="upBanner">
+update banners
+set status="上架"
+where id=#{id}
+</update>
+
+    <update id="downBanner">
+update banners
+set status="下架"
+where id=#{id}
+</update>
+</mapper>

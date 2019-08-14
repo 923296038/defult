@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.TypeMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.Type" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="type_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="collection_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_at" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="update_at" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="update_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type_name, collection_name, status, create_at, update_at, update_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from types
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="findByTypeName" resultMap="BaseResultMap" parameterType="String">
+    select * from types where type_name=#{type_name}
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select * from types
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from types
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.Type" >
+    insert into types (id, type_name, collection_name, 
+      status, create_at, update_at, 
+      update_by)
+    values (#{id,jdbcType=BIGINT}, #{type_name,jdbcType=VARCHAR}, #{collection_name,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{create_at,jdbcType=BIGINT}, #{update_at,jdbcType=BIGINT}, 
+      #{update_by,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.Type" >
+    insert into types
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type_name != null" >
+        type_name,
+      </if>
+      <if test="collection_name != null" >
+        collection_name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="create_at != null" >
+        create_at,
+      </if>
+      <if test="update_at != null" >
+        update_at,
+      </if>
+      <if test="update_by != null" >
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type_name != null" >
+        #{type_name,jdbcType=VARCHAR},
+      </if>
+      <if test="collection_name != null" >
+        #{collection_name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="create_at != null" >
+        #{create_at,jdbcType=BIGINT},
+      </if>
+      <if test="update_at != null" >
+        #{update_at,jdbcType=BIGINT},
+      </if>
+      <if test="update_by != null" >
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.Type" >
+    update types
+    <set >
+      <if test="type_name != null" >
+        type_name = #{type_name,jdbcType=VARCHAR},
+      </if>
+      <if test="collection_name != null" >
+        collection_name = #{collection_name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="create_at != null" >
+        create_at = #{create_at,jdbcType=BIGINT},
+      </if>
+      <if test="update_at != null" >
+        update_at = #{update_at,jdbcType=BIGINT},
+      </if>
+      <if test="update_by != null" >
+        update_by = #{update_by,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Type" >
+    update types
+    set type_name = #{type_name,jdbcType=VARCHAR},
+      collection_name = #{collection_name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      create_at = #{create_at,jdbcType=BIGINT},
+      update_at = #{update_at,jdbcType=BIGINT},
+      update_by = #{update_by,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="upType" parameterType="Long">
+    update types set status = "上架" where id = #{id}
+  </update>
+  <update id="downType" parameterType="Long">
+    update types set status = "下架" where id = #{id}
+  </update>
+</mapper>

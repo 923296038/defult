@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.WorkMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.Work" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="work_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="collection_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="second_collection_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_at" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="update_at" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="update_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, work_name, collection_name, second_collection_name, status, create_at, update_at, 
+    update_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from works
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectByWorkName" resultMap="BaseResultMap" parameterType="String">
+    select * from works where work_name=#{work_name}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from works
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from works
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pojo.Work" >
+    insert into works (id, work_name, collection_name, 
+      second_collection_name, status, create_at, 
+      update_at, update_by)
+    values (#{id,jdbcType=BIGINT}, #{work_name,jdbcType=VARCHAR}, #{collection_name,jdbcType=VARCHAR}, 
+      #{second_collection_name,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{create_at,jdbcType=BIGINT}, 
+      #{update_at,jdbcType=BIGINT}, #{update_by,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.Work" >
+    insert into works
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="work_name != null" >
+        work_name,
+      </if>
+      <if test="collection_name != null" >
+        collection_name,
+      </if>
+      <if test="second_collection_name != null" >
+        second_collection_name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="create_at != null" >
+        create_at,
+      </if>
+      <if test="update_at != null" >
+        update_at,
+      </if>
+      <if test="update_by != null" >
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="work_name != null" >
+        #{work_name,jdbcType=VARCHAR},
+      </if>
+      <if test="collection_name != null" >
+        #{collection_name,jdbcType=VARCHAR},
+      </if>
+      <if test="second_collection_name != null" >
+        #{second_collection_name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="create_at != null" >
+        #{create_at,jdbcType=BIGINT},
+      </if>
+      <if test="update_at != null" >
+        #{update_at,jdbcType=BIGINT},
+      </if>
+      <if test="update_by != null" >
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.Work" >
+    update works
+    <set >
+      <if test="work_name != null" >
+        work_name = #{work_name,jdbcType=VARCHAR},
+      </if>
+      <if test="collection_name != null" >
+        collection_name = #{collection_name,jdbcType=VARCHAR},
+      </if>
+      <if test="second_collection_name != null" >
+        second_collection_name = #{second_collection_name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="create_at != null" >
+        create_at = #{create_at,jdbcType=BIGINT},
+      </if>
+      <if test="update_at != null" >
+        update_at = #{update_at,jdbcType=BIGINT},
+      </if>
+      <if test="update_by != null" >
+        update_by = #{update_by,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Work" >
+    update works
+    set work_name = #{work_name,jdbcType=VARCHAR},
+      collection_name = #{collection_name,jdbcType=VARCHAR},
+      second_collection_name = #{second_collection_name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      create_at = #{create_at,jdbcType=BIGINT},
+      update_at = #{update_at,jdbcType=BIGINT},
+      update_by = #{update_by,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="upWork" parameterType="Long">
+    update works set status = "上架" where id = #{id}
+  </update>
+  <update id="downWork" parameterType="Long">
+    update works set status = "下架" where id = #{id}
+  </update>
+</mapper>
