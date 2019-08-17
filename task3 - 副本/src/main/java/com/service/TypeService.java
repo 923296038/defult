@@ -10,9 +10,9 @@ public interface TypeService {
     int insert(Type record);
 
     List<Type> findByTypeName(String type_name);
-
+    List<Type> findByVolumeName(String volume_name);
     List<Type> findAll();
-
+    Type findById(Long id);
     boolean updateByPrimaryKey(Type record);
 
     boolean upType(Long id);

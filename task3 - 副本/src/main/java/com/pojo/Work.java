@@ -5,9 +5,9 @@ public class Work {
 
     private String work_name;
 
-    private String collection_name;
+    private String volume_name;
 
-    private String second_collection_name;
+    private String second_volume_name;
 
     private String status;
 
@@ -17,33 +17,29 @@ public class Work {
 
     private String update_by;
 
+    private String introduction;
+    private String pic;
+    private String video;
+    private String pic1;
+    private String article;
+
     @Override
     public String toString() {
         return "Work{" +
                 "id=" + id +
                 ", work_name='" + work_name + '\'' +
-                ", collection_name='" + collection_name + '\'' +
-                ", second_collection_name='" + second_collection_name + '\'' +
+                ", volume_name='" + volume_name + '\'' +
+                ", second_volume_name='" + second_volume_name + '\'' +
                 ", status='" + status + '\'' +
                 ", create_at=" + create_at +
                 ", update_at=" + update_at +
                 ", update_by='" + update_by + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", pic='" + pic + '\'' +
+                ", video='" + video + '\'' +
+                ", pic1='" + pic1 + '\'' +
+                ", article='" + article + '\'' +
                 '}';
-    }
-
-    public Work(Long id, String work_name, String collection_name, String second_collection_name, String status, Long create_at, Long update_at, String update_by) {
-        this.id = id;
-        this.work_name = work_name;
-        this.collection_name = collection_name;
-        this.second_collection_name = second_collection_name;
-        this.status = status;
-        this.create_at = create_at;
-        this.update_at = update_at;
-        this.update_by = update_by;
-    }
-
-    public Work() {
-        super();
     }
 
     public Long getId() {
@@ -59,23 +55,23 @@ public class Work {
     }
 
     public void setWork_name(String work_name) {
-        this.work_name = work_name == null ? null : work_name.trim();
+        this.work_name = work_name;
     }
 
-    public String getCollection_name() {
-        return collection_name;
+    public String getVolume_name() {
+        return volume_name;
     }
 
-    public void setCollection_name(String collection_name) {
-        this.collection_name = collection_name == null ? null : collection_name.trim();
+    public void setVolume_name(String volume_name) {
+        this.volume_name = volume_name;
     }
 
-    public String getSecond_collection_name() {
-        return second_collection_name;
+    public String getSecond_volume_name() {
+        return second_volume_name;
     }
 
-    public void setSecond_collection_name(String second_collection_name) {
-        this.second_collection_name = second_collection_name == null ? null : second_collection_name.trim();
+    public void setSecond_volume_name(String second_volume_name) {
+        this.second_volume_name = second_volume_name;
     }
 
     public String getStatus() {
@@ -83,7 +79,7 @@ public class Work {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Long getCreate_at() {
@@ -107,6 +103,65 @@ public class Work {
     }
 
     public void setUpdate_by(String update_by) {
-        this.update_by = update_by == null ? null : update_by.trim();
+        this.update_by = update_by;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
+    public String getPic1() {
+        return pic1;
+    }
+
+    public void setPic1(String pic1) {
+        this.pic1 = pic1;
+    }
+
+    public String getArticle() {
+        return article;
+    }
+
+    public void setArticle(String article) {
+        this.article = article;
+    }
+
+    public Work(Long id, String work_name, String volume_name, String second_volume_name, String status, Long create_at, Long update_at, String update_by, String introduction, String pic, String video, String pic1, String article) {
+        this.id = id;
+        this.work_name = work_name;
+        this.volume_name = volume_name;
+        this.second_volume_name = second_volume_name;
+        this.status = status;
+        this.create_at = create_at;
+        this.update_at = update_at;
+        this.update_by = update_by;
+        this.introduction = introduction;
+        this.pic = pic;
+        this.video = video;
+        this.pic1 = pic1;
+        this.article = article;
+    }
+
+    public Work() {
     }
 }

@@ -6,15 +6,15 @@
 
     <insert id="insertBanner" parameterType="com.pojo.Banner">
 insert into banners
-(create_by,url,status,create_at,update_at)
+(banner_cover,create_by,url,status,create_at,update_at,pic)
 values
-(#{create_by},#{url},#{status},#{create_at},#{update_at})
+(#{banner_cover},#{create_by},#{url},#{status},#{create_at},#{update_at},#{pic})
 </insert>
 
     <update id="updateBanner" parameterType="com.pojo.Banner">
 update banners
-set create_by=#{create_by},url=#{url},
-status=#{status},create_at=#{create_at},update_at=#{update_at}
+set url=#{url},
+update_at=#{update_at},pic=#{pic}
 where id=#{id}
 </update>
 
@@ -25,11 +25,13 @@ where id=#{id}
 
     <resultMap id="BannerResultMap" type="com.pojo.Banner">
         <id property="id" column="id" javaType="Long"/>
+        <result property="banner_cover" column="banner_cover" javaType="String"/>
         <result property="create_by" column="create_by" javaType="String"/>
         <result property="url" column="url" javaType="String"/>
         <result property="status" column="status" javaType="String"/>
         <result property="create_at" column="create_at" javaType="Long"/>
         <result property="update_at" column="update_at" javaType="Long"/>
+        <result property="pic" column="pic" javaType="String"/>
     </resultMap>
 
     <select id="findByName" parameterType="String" resultMap="BannerResultMap">
@@ -37,9 +39,17 @@ select * from banners
 where create_by=#{create_by}
 </select>
 
-    <select id="findAllBanner" resultMap="BannerResultMap">
+<select id="findAllBanner" resultMap="BannerResultMap">
 select * from banners
 </select>
+
+    <select id="findById" resultType="com.pojo.Banner" parameterType="Long">
+        select * from banners where id = #{id}
+    </select>
+
+    <select id="findByStauts" resultMap="BannerResultMap" parameterType="String">
+        select * from banners where status = #{status}
+    </select>
 
     <update id="upBanner">
 update banners

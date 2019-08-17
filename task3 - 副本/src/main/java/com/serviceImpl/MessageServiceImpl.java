@@ -34,8 +34,8 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<Message> findByUserName(String user_name) {
-        return messageMapper.findByUserName(user_name);
+    public List<Message> findByWorkTitle(String work_title) {
+        return messageMapper.findByWorkTitle(work_title);
     }
 
     @Override

@@ -15,6 +15,11 @@
 <head>留言列表</title>
 </head>
 <body>
+<form action="/Messages/MessageByName" method="GET">
+    <label for="work_title">作品/标题名称：</label>
+    <input id="work_title" name="work_title">
+    <input type="submit" value="查询"/>
+</form>
 <table width="100%" border="1">
     <tbody>
     <tr>
@@ -46,19 +51,21 @@
     </c:forEach>
     </tbody>
 </table>
-<center>
-    <p>当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
-        页,总 ${pageInfo.total } 条记录</div></p>
-    <a href="/AllStudent?pageNo=${pageInfo.firstPage}">1</a>
 
-    <a href="/AllStudent?pageNo=${pageInfo.firstPage+1}">2</a>
-
+    <p>当前 ${pageInfo.pageNum}页,总${pageInfo.pages}
+        页,总 ${pageInfo.total} 条记录</div></p>
+    <a href="/Messages/AllMessages?pageNo=${pageInfo.firstPage}">1</a>
+    <c:if test="${pageInfo.hasNextPage}">
+    <a href="/Messages/AllMessages?pageNo=${pageInfo.firstPage+1}">2</a>
+    </c:if>
     <c:if test="${pageInfo.hasPreviousPage }">
-    <a href="/AllStudent?pageNo=${pageInfo.pageNum-1}">上一页</a>
+    <a href="/Messages/AllMessages?pageNo=${pageInfo.pageNum-1}">上一页</a>
     </c:if>
     <c:if test="${pageInfo.hasNextPage }">
-    <a href="/AllStudent?pageNo=${pageInfo.pageNum+1}">下一页</a>
+    <a href="/Messages/AllMessages?pageNo=${pageInfo.pageNum+1}">下一页</a>
     </c:if>
-    <a href="/AllStudent?pageNo=${pageInfo.lastPage}">${pageInfo.lastPage}</a>
+    <c:if test="${pageInfo.hasNextPage}">
+    <a href="/Messages/AllMessages?pageNo=${pageInfo.lastPage}">${pageInfo.lastPage}</a>
+    </c:if>
 </body>
 </html>

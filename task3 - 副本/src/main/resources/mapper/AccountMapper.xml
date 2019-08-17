@@ -6,15 +6,15 @@
 
     <insert id="insertAccount" parameterType="com.pojo.Account">
         insert into accounts
-        (account_name,role,update_at,update_by)
+        (account_name,role,update_at,update_by,password)
         values
-        (#{account_name},#{role},#{update_at},#{update_by})
+        (#{account_name},#{role},#{update_at},#{update_by},#{password})
     </insert>
 
     <update id="updateAccount" parameterType="com.pojo.Account">
         update accounts
         set account_name=#{account_name},role=#{role},
-        update_at=#{update_at},update_by=#{update_by}
+        update_at=#{update_at},password=#{password}
         where id=#{id}
     </update>
 
@@ -27,6 +27,7 @@
         <id property="id" column="id" javaType="Long"/>
         <result property="account_name" column="account_name" javaType="String"/>
         <result property="role" column="role" javaType="String"/>
+        <result property="password" column="password" javaType="String"/>
         <result property="update_at" column="update_at" javaType="Long"/>
         <result property="update_by" column="update_by" javaType="String"/>
 
@@ -40,4 +41,12 @@
     <select id="findAllAccount" resultMap="AccountResultMap">
         select * from accounts
     </select>
+
+    <select id="findById" resultType="com.pojo.Account" parameterType="Long">
+        select * from accounts where id = #{id}
+    </select>
+    <select id="findByRole" resultMap="AccountResultMap" parameterType="String">
+        select * from accounts where role = #{role}
+    </select>
+
 </mapper>

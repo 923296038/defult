@@ -33,9 +33,9 @@ where id=#{id}
         <result property="update_by" column="update_by" javaType="String"/>
     </resultMap>
 
-    <select id="findByUserName" parameterType="String" resultMap="MessageResultMap">
+    <select id="findByWorkTitle" parameterType="String" resultMap="MessageResultMap">
 select * from messages
-where user_name=#{user_name}
+where work_title=#{work_title}
 </select>
 
     <select id="findAllMessage" resultMap="MessageResultMap">

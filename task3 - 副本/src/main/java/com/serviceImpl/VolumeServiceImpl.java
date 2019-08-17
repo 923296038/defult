@@ -39,6 +39,16 @@ public class VolumeServiceImpl implements VolumeService {
     }
 
     @Override
+    public List<Volume> findByStatus(String status) {
+        return volumeMapper.findByStatus(status);
+    }
+
+    @Override
+    public Volume findById(Long id) {
+        return volumeMapper.findById(id);
+    }
+
+    @Override
     public boolean upVolume(Long id) {
         return volumeMapper.upVolume(id);
     }

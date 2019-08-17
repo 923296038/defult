@@ -21,10 +21,20 @@ public class StudioServiceImpl implements StudioService {
         return studioMapper.insert(record);
     }
 
+    @Override
+    public Studio selectByPrimaryKey(Long id) {
+        return studioMapper.selectByPrimaryKey(id);
+    }
+
 
     @Override
     public List<Studio> findByStudioName(String studio_name) {
         return studioMapper.findByStudioName(studio_name);
+    }
+
+    @Override
+    public List<Studio> findByStatus(String status) {
+        return studioMapper.findByStatus(status);
     }
 
     @Override

@@ -9,10 +9,12 @@
       <arg column="create_at" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="update_at" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="update_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="body" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="picture" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, studio_name, status, create_at, update_at, update_by
+    id, studio_name, status, create_at, update_at, update_by, body, picture
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -27,16 +29,22 @@
   <select id="findAll" resultType="com.pojo.Studio">
     select * from studios
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+
+  <select id="findByStatus" resultMap="BaseResultMap" parameterType="Studio">
+    select * from studios where status=#{status}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from studios
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.pojo.Studio" >
-    insert into studios (id, studio_name, status, 
-      create_at, update_at, update_by
+    insert into studios (studio_name,
+      create_at, update_at, body, picture
       )
-    values (#{id,jdbcType=BIGINT}, #{studio_name,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{create_at,jdbcType=BIGINT}, #{update_at,jdbcType=BIGINT}, #{update_by,jdbcType=VARCHAR}
+    values ( #{studio_name,jdbcType=VARCHAR},
+      #{create_at,jdbcType=BIGINT}, #{update_at,jdbcType=BIGINT},
+      #{body}, #{picture}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.Studio" >
@@ -106,10 +114,9 @@
   <update id="updateByPrimaryKey" parameterType="com.pojo.Studio" >
     update studios
     set studio_name = #{studio_name,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR},
-      create_at = #{create_at,jdbcType=BIGINT},
       update_at = #{update_at,jdbcType=BIGINT},
-      update_by = #{update_by,jdbcType=VARCHAR}
+      body = #{body},
+      picture = #{picture}
     where id = #{id,jdbcType=BIGINT}
   </update>
 

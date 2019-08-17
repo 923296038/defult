@@ -2,24 +2,25 @@ package com.pojo;
 
 public class Banner {
     private long id;
+    private String banner_cover;
     private String create_by;
     private String url;
     private String status;
     private long create_at;
     private long update_at;
-
-    public Banner() {
-    }
+    private String pic;
 
     @Override
     public String toString() {
         return "Banner{" +
                 "id=" + id +
-                ", update_by='" + create_by + '\'' +
+                ", banner_cover='" + banner_cover + '\'' +
+                ", create_by='" + create_by + '\'' +
                 ", url='" + url + '\'' +
                 ", status='" + status + '\'' +
                 ", create_at=" + create_at +
                 ", update_at=" + update_at +
+                ", pic='" + pic + '\'' +
                 '}';
     }
 
@@ -31,12 +32,20 @@ public class Banner {
         this.id = id;
     }
 
-    public String getUpdate_by() {
+    public String getBanner_cover() {
+        return banner_cover;
+    }
+
+    public void setBanner_cover(String banner_cover) {
+        this.banner_cover = banner_cover;
+    }
+
+    public String getCreate_by() {
         return create_by;
     }
 
-    public void setUpdate_by(String update_by) {
-        this.create_by = update_by;
+    public void setCreate_by(String create_by) {
+        this.create_by = create_by;
     }
 
     public String getUrl() {
@@ -71,11 +80,25 @@ public class Banner {
         this.update_at = update_at;
     }
 
-    public Banner(String create_by, String url, String status, long create_at, long update_at) {
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
+    public Banner(long id, String banner_cover, String create_by, String url, String status, long create_at, long update_at, String pic) {
+        this.id = id;
+        this.banner_cover = banner_cover;
         this.create_by = create_by;
         this.url = url;
         this.status = status;
         this.create_at = create_at;
         this.update_at = update_at;
+        this.pic = pic;
+    }
+
+    public Banner() {
     }
 }

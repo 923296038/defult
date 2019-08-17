@@ -11,6 +11,8 @@ public interface VolumeService {
     boolean updateVolume(Volume volume);
     List<Volume> findByName(String volume_name);
     List<Volume> findAll();
+    List<Volume> findByStatus(String status);
+    Volume findById(Long id);
     boolean upVolume(Long id);
     boolean downVolume(Long id);
 }

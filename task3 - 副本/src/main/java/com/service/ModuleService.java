@@ -9,4 +9,5 @@ public interface ModuleService {
     boolean updateModule(Module module);
     List<Module> findByModuleName(String module_name);
     List<Module> findAll();
+    Module findById(Long id);
 }

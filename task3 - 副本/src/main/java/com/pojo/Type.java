@@ -5,7 +5,7 @@ public class Type {
 
     private String type_name;
 
-    private String collection_name;
+    private String volume_name;
 
     private String status;
 
@@ -15,31 +15,17 @@ public class Type {
 
     private String update_by;
 
-    public Type(Long id, String type_name, String collection_name, String status, Long create_at, Long update_at, String update_by) {
-        this.id = id;
-        this.type_name = type_name;
-        this.collection_name = collection_name;
-        this.status = status;
-        this.create_at = create_at;
-        this.update_at = update_at;
-        this.update_by = update_by;
-    }
-
     @Override
     public String toString() {
         return "Type{" +
                 "id=" + id +
                 ", type_name='" + type_name + '\'' +
-                ", collection_name='" + collection_name + '\'' +
+                ", volume_name='" + volume_name + '\'' +
                 ", status='" + status + '\'' +
                 ", create_at=" + create_at +
                 ", update_at=" + update_at +
                 ", update_by='" + update_by + '\'' +
                 '}';
-    }
-
-    public Type() {
-        super();
     }
 
     public Long getId() {
@@ -55,15 +41,15 @@ public class Type {
     }
 
     public void setType_name(String type_name) {
-        this.type_name = type_name == null ? null : type_name.trim();
+        this.type_name = type_name;
     }
 
-    public String getCollection_name() {
-        return collection_name;
+    public String getVolume_name() {
+        return volume_name;
     }
 
-    public void setCollection_name(String collection_name) {
-        this.collection_name = collection_name == null ? null : collection_name.trim();
+    public void setVolume_name(String volume_name) {
+        this.volume_name = volume_name;
     }
 
     public String getStatus() {
@@ -71,7 +57,7 @@ public class Type {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Long getCreate_at() {
@@ -95,6 +81,19 @@ public class Type {
     }
 
     public void setUpdate_by(String update_by) {
-        this.update_by = update_by == null ? null : update_by.trim();
+        this.update_by = update_by;
+    }
+
+    public Type(Long id, String type_name, String volume_name, String status, Long create_at, Long update_at, String update_by) {
+        this.id = id;
+        this.type_name = type_name;
+        this.volume_name = volume_name;
+        this.status = status;
+        this.create_at = create_at;
+        this.update_at = update_at;
+        this.update_by = update_by;
+    }
+
+    public Type() {
     }
 }

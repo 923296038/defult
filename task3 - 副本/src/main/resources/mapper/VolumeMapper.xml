@@ -41,4 +41,10 @@
     <select id="findAll" resultMap="VolumeRM">
         select * from volumes
     </select>
+    <select id="findByStatus" resultMap="VolumeRM">
+        select * from volumes where status = #{status}
+    </select>
+    <select id="findById" resultType="com.pojo.Volume" parameterType="Long">
+        select * from volumes where id = #{id}
+    </select>
 </mapper>

@@ -1,8 +1,14 @@
 package com.pojo;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
+
 public class Module {
     private long id;
+    @NotBlank(message = "模块名为空")
     private String module_name;
+    @NotNull(message = "父节点为空")
     private long parent_node_id;
     private String url;
     private long create_at;

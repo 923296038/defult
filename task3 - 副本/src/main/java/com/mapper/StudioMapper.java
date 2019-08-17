@@ -14,7 +14,7 @@ public interface StudioMapper {
     Studio selectByPrimaryKey(Long id);
 
     List<Studio> findByStudioName(String studio_name);
-
+    List<Studio> findByStatus(String status);
     List<Studio> findAll();
 
     boolean updateByPrimaryKeySelective(Studio record);

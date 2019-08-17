@@ -46,7 +46,9 @@
             </list>
         </property>
     </bean>-->
-    <!--配置校验器 start-->
+
+
+    <!--配置校验器-->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <!-- hibernate校验器 -->
         <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
@@ -69,8 +71,16 @@
         <!-- 资源文件缓存时间 -->
         <property name="cacheSeconds" value="120"></property>
     </bean>
-    <!--配置校验器 end-->
 
-    <!-- 4.扫描web相关的bean -->
+    <!--上传图片的配置-->
+    <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        &lt;!&ndash; 最大内存大小 &ndash;&gt;
+        <property name="maxInMemorySize" value="10240"/>
+        &lt;!&ndash; 最大文件大小，-1为不限制大小 &ndash;&gt;
+        <property name="maxUploadSize" value="-1"/>
+    </bean>-->
+
+
 
 </beans>

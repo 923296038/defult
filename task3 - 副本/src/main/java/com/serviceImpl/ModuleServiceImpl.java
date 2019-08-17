@@ -37,4 +37,9 @@ public class ModuleServiceImpl implements ModuleService {
     public List<Module> findAll() {
         return moduleMapper.findAll();
     }
+
+    @Override
+    public Module findById(Long id) {
+        return moduleMapper.findById(id);
+    }
 }

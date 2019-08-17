@@ -40,6 +40,16 @@ public class BannerServiceImpl implements BannerService {
     }
 
     @Override
+    public List<Banner> findByStatus(String status) {
+        return bannerMapper.findByStauts(status);
+    }
+
+    @Override
+    public Banner findById(Long id) {
+        return bannerMapper.findById(id);
+    }
+
+    @Override
     public boolean upBanner(long id) {
         return bannerMapper.upBanner(id);
     }

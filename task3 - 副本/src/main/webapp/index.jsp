@@ -7,7 +7,7 @@
 <a href="/Messages/AllMessages">留言管理</a>
 <a href="/Collections">作品管理</a>
 <a href="/Banners">banner图管理</a>
-<a href="/Studios">工作室管理</a>
+<a href="/Studios/AllStudios">工作室管理</a>
 <a href="/History">轨迹管理</a>
 <a href="/Accounts">账户管理</a>
 <a href="/Roles">角色管理</a>

@@ -1,9 +1,12 @@
 package com.pojo;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.security.SecureRandom;
 
 public class Message {
     private long id;
+    @NotBlank(message = "作品标题不为空")
     private String work_title;
     private String user_name;
     private String status;

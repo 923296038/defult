@@ -14,7 +14,7 @@ public interface TypeMapper {
     Type selectByPrimaryKey(Long id);
 
     List<Type> findByTypeName(String type_name);
-
+    List<Type> findByVolumeName(String volume_name);
     List<Type> findAll();
 
     boolean updateByPrimaryKeySelective(Type record);

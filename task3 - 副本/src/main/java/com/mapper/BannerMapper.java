@@ -9,6 +9,8 @@ public interface BannerMapper {
     boolean updateBanner(Banner banner);
     List<Banner> findByName(String create_by);
     List<Banner> findAllBanner();
+    List<Banner> findByStauts(String status);
+    Banner findById(Long id);
     boolean upBanner(long id);
     boolean downBanner(long id);
 }

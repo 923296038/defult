@@ -27,8 +27,18 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
+    public List<Type> findByVolumeName(String volume_name) {
+        return typeMapper.findByVolumeName(volume_name);
+    }
+
+    @Override
     public List<Type> findAll() {
         return typeMapper.findAll();
+    }
+
+    @Override
+    public Type findById(Long id) {
+        return typeMapper.selectByPrimaryKey(id);
     }
 
     @Override

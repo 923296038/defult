@@ -8,7 +8,7 @@ public interface MessageService {
     boolean deleteMessage(Long id);
     boolean updateMessage(Message message);
     boolean updateReply(Message message);
-    List<Message> findByUserName(String user_name);
+    List<Message> findByWorkTitle(String work_title);
     List<Message> findAllMessage();
     Message findByID(Long id);
     boolean upMessage(Long id);

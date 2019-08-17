@@ -28,6 +28,16 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public Account findById(Long id) {
+        return accountMapper.findById(id);
+    }
+
+    @Override
+    public List<Account> findByRole(String role) {
+        return accountMapper.findByRole(role);
+    }
+
+    @Override
     public List<Account> findByName(String account_name) {
         return accountMapper.findByName(account_name);
     }

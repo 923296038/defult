@@ -40,4 +40,7 @@
     <select id="findAll" resultMap="ModuleResultMap">
         select * from modules
     </select>
+    <select id="findById" resultType="com.pojo.Module" parameterType="Long">
+        select * from modules where id = #{id}
+    </select>
 </mapper>

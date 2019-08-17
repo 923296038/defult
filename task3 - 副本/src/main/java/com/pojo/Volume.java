@@ -12,7 +12,7 @@ public class Volume {
     public String toString() {
         return "Volume{" +
                 "id=" + id +
-                ", collection_name='" + volume_name + '\'' +
+                ", volume_name='" + volume_name + '\'' +
                 ", status='" + status + '\'' +
                 ", create_at=" + create_at +
                 ", update_at=" + update_at +

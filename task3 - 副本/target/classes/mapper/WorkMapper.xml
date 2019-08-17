@@ -5,17 +5,22 @@
     <constructor >
       <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="work_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="collection_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="second_collection_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="volume_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="second_volume_name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="create_at" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="update_at" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="update_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="introduction" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pic" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="video" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pic1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="article" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, work_name, collection_name, second_collection_name, status, create_at, update_at, 
-    update_by
+    id, work_name, volume_name, second_volume_name, status, create_at, update_at,
+    update_by,introduciton,pic,video,pic1,article
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -35,12 +40,13 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.pojo.Work" >
-    insert into works (id, work_name, collection_name, 
-      second_collection_name, status, create_at, 
-      update_at, update_by)
-    values (#{id,jdbcType=BIGINT}, #{work_name,jdbcType=VARCHAR}, #{collection_name,jdbcType=VARCHAR}, 
-      #{second_collection_name,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{create_at,jdbcType=BIGINT}, 
-      #{update_at,jdbcType=BIGINT}, #{update_by,jdbcType=VARCHAR})
+    insert into works (id, work_name, volume_name,
+      second_volume_name, status, create_at,
+      update_at, update_by, introduction, pic, video, pic1, article)
+    values (#{id,jdbcType=BIGINT}, #{work_name,jdbcType=VARCHAR}, #{volume_name,jdbcType=VARCHAR},
+      #{second_volume_name,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{create_at,jdbcType=BIGINT},
+      #{update_at,jdbcType=BIGINT}, #{update_by,jdbcType=VARCHAR},#{introduction,jdbcType=VARCHAR},#{pic,jdbcType=VARCHAR},
+      #{video,jdbcType=VARCHAR},#{pic1,jdbcType=VARCHAR},#{article,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.Work" >
     insert into works
@@ -127,12 +133,12 @@
   <update id="updateByPrimaryKey" parameterType="com.pojo.Work" >
     update works
     set work_name = #{work_name,jdbcType=VARCHAR},
-      collection_name = #{collection_name,jdbcType=VARCHAR},
-      second_collection_name = #{second_collection_name,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR},
-      create_at = #{create_at,jdbcType=BIGINT},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      video = #{video,jdbcType=VARCHAR},
+      pic1 = #{pic1,jdbcType=BIGINT},
       update_at = #{update_at,jdbcType=BIGINT},
-      update_by = #{update_by,jdbcType=VARCHAR}
+      article = #{article,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="upWork" parameterType="Long">

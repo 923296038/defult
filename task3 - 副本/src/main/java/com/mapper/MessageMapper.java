@@ -8,7 +8,7 @@ public interface MessageMapper {
     boolean deleteMessage(Long id);
     boolean updateMessage(Message message);
     boolean updateReply(Message message);
-    List<Message> findByUserName(String user_name);
+    List<Message> findByWorkTitle(String work_title);
     Message findByID(Long id);
     List<Message> findAllMessage();
     boolean upMessage(Long id);

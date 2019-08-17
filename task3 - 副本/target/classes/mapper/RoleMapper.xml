@@ -6,9 +6,10 @@
     <result property="role" column="role" javaType="String"/>
     <result property="create_at" column="create_at" javaType="Long"/>
     <result property="create_by" column="create_by" javaType="String"/>
+    <result property="permission" column="permission" javaType="String"/>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, role, create_at, create_by
+    id, role, create_at, create_by,permission
   </sql>
   <select id="selectByPrimaryKey" resultMap="RoleResultMap" parameterType="java.lang.Long" >
     select 
@@ -28,9 +29,9 @@
   </delete>
   <insert id="insert" parameterType="com.pojo.Role" >
     insert into roles (id, role, create_at, 
-      create_by)
+      create_by,permission)
     values (#{id,jdbcType=BIGINT}, #{role,jdbcType=VARCHAR}, #{create_at,jdbcType=BIGINT}, 
-      #{create_by,jdbcType=VARCHAR})
+      #{create_by,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.Role" >
     insert into roles
@@ -82,7 +83,7 @@
     update roles
     set role = #{role,jdbcType=VARCHAR},
       create_at = #{create_at,jdbcType=BIGINT},
-      create_by = #{create_by,jdbcType=VARCHAR}
+      permission = #{permission}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

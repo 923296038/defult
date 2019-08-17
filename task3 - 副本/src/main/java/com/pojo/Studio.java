@@ -13,6 +13,10 @@ public class Studio {
 
     private String update_by;
 
+    private String body;
+
+    private String picture;
+
     @Override
     public String toString() {
         return "Studio{" +
@@ -22,20 +26,9 @@ public class Studio {
                 ", create_at=" + create_at +
                 ", update_at=" + update_at +
                 ", update_by='" + update_by + '\'' +
+                ", body='" + body + '\'' +
+                ", picture='" + picture + '\'' +
                 '}';
-    }
-
-    public Studio(Long id, String studio_name, String status, Long create_at, Long update_at, String update_by) {
-        this.id = id;
-        this.studio_name = studio_name;
-        this.status = status;
-        this.create_at = create_at;
-        this.update_at = update_at;
-        this.update_by = update_by;
-    }
-
-    public Studio() {
-        super();
     }
 
     public Long getId() {
@@ -51,7 +44,7 @@ public class Studio {
     }
 
     public void setStudio_name(String studio_name) {
-        this.studio_name = studio_name == null ? null : studio_name.trim();
+        this.studio_name = studio_name;
     }
 
     public String getStatus() {
@@ -59,7 +52,7 @@ public class Studio {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Long getCreate_at() {
@@ -83,6 +76,36 @@ public class Studio {
     }
 
     public void setUpdate_by(String update_by) {
-        this.update_by = update_by == null ? null : update_by.trim();
+        this.update_by = update_by;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public Studio(Long id, String studio_name, String status, Long create_at, Long update_at, String update_by, String body, String picture) {
+        this.id = id;
+        this.studio_name = studio_name;
+        this.status = status;
+        this.create_at = create_at;
+        this.update_at = update_at;
+        this.update_by = update_by;
+        this.body = body;
+        this.picture = picture;
+    }
+
+    public Studio() {
     }
 }
