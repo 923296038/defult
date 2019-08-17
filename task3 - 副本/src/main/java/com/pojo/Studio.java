@@ -1,8 +1,10 @@
 package com.pojo;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Studio {
     private Long id;
-
+    @NotBlank
     private String studio_name;
 
     private String status;

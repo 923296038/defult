@@ -12,10 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -27,99 +24,100 @@ public class MessageController {
     private static final Logger log= LogManager.getLogger(MessageController.class);
     //留言列表
     @RequestMapping(value = "Messages/AllMessages",method = RequestMethod.GET)
-    public String findAllM(Model model,@RequestParam(defaultValue = "1",required = true,
-            value = "pageNo") Integer pageNo){
-        Integer pageSize=5;
-        PageHelper.startPage(pageNo,pageSize);
+    @ResponseBody
+    public String findAllM(){
         List<Message> messageList = messageService.findAllMessage();
-        PageInfo<Message> pageInfo = new PageInfo<>(messageList);
-        model.addAttribute("pageInfo",pageInfo);
-        return "message/AllMessages";
+        log.error(messageList);
+        return ""+messageList;
     }
     //根据作品查询留言
     @RequestMapping(value = "Messages/MessageByName",method = RequestMethod.GET)
-    public String MessageBN(Model model,@RequestParam(defaultValue = "1",required = true,
-            value = "pageNo") Integer pageNo,HttpServletRequest request,String work_title,
+    @ResponseBody
+    public String MessageBN(HttpServletRequest request,String work_title,
                             @Validated Message message,BindingResult bindingResult){
         if(work_title.length()==0&&bindingResult.hasErrors()){
             List<ObjectError> allErrors = bindingResult.getAllErrors();
             for (ObjectError objectError:allErrors){
                 log.error(objectError.getDefaultMessage());
             }
-            model.addAttribute("allErrors",allErrors);
-            log.error(bindingResult);
-            return "error";
+            return ""+allErrors;
         }
-        Integer pageSize=5;
-        PageHelper.startPage(pageNo,pageSize);
         List<Message> messageList = messageService.findByWorkTitle(work_title);
-        PageInfo<Message> pageInfo = new PageInfo<>(messageList);
-        log.error(pageInfo);
-        model.addAttribute("pageInfo",pageInfo);
-        return "message/MessageFindR";
+        log.error(messageList);
+        return ""+messageList;
     }
     //前往编辑留言
-    @RequestMapping(value = "Messages/toMessageInfo/{id}",method = RequestMethod.GET)
+    /*@RequestMapping(value = "Messages/toMessageInfo/{id}",method = RequestMethod.GET)
+    @ResponseBody
     public String toMI(Model model, @PathVariable Long id){
         Message message= messageService.findByID(id);
         model.addAttribute("message",message);
         return "MessageInfo";
-    }
+    }*/
 
     //编辑留言
-//    @RequestMapping(value = "StudentInfo",
-//            method = RequestMethod.POST)
-//    public String updateStudent(Model model, Message message){
-//
-//        message.setUpdate_at(System.currentTimeMillis());
-//
-//    }
+    /*@RequestMapping(value = "StudentInfo",
+            method = RequestMethod.POST)
+    public String updateStudent(Model model, Message message){
+
+        message.setUpdate_at(System.currentTimeMillis());
+
+    }*/
     //设为精选
-    @RequestMapping(value = "Messages/Selected/{id}",method = RequestMethod.POST)
-    public String selected(Model model,@PathVariable Long id){
+    @RequestMapping(value = "Messages/Selected",method = RequestMethod.POST)
+    @ResponseBody
+    public String selected(Long id){
         messageService.upMessage(id);
         log.error("执行了精选"+id);
-        return "redirect:/Messages/AllMessages";
+        return "selected :" + id;
     }
     //取精
-    @RequestMapping(value = "Messages/unSelected/{id}",method = RequestMethod.POST)
-    public String unSelected(Model model,@PathVariable Long id){
-        log.error("unSelected"+id);
+    @RequestMapping(value = "Messages/unSelected",method = RequestMethod.POST)
+    @ResponseBody
+    public String unSelected(Long id){
         messageService.downMessage(id);
-        return "redirect:/Messages/AllMessages";
+        log.error("unSelected"+id);
+        return "unselected : " + id;
     }
     //前往回复留言
-    @RequestMapping(value = "Messages/toResponse/{id}",method = RequestMethod.GET)
+    /*@RequestMapping(value = "Messages/toResponse/{id}",method = RequestMethod.GET)
+    @ResponseBody
     public String toResp(Model model,@PathVariable Long id){
         Message message= messageService.findByID(id);
         log.error(message);
         model.addAttribute("message",message);
         return "message/ReplyMessage";
-    }
+    }*/
     //回复留言
     @RequestMapping(value = "Messages/Response",method = RequestMethod.POST)
-    public String response(Model model,Message message){
+    @ResponseBody
+    public String response(Message message){
+        message.setUpdate_at(System.currentTimeMillis());
         messageService.updateReply(message);
         //同时设为精选留言
         messageService.upMessage(message.getId());
         Message message1 =messageService.findByID(message.getId());
-        model.addAttribute("message",message1);
-        return "MessageInfo";
+        return "MessageInfo"+message1;
     }
     //前往删除留言
-    @RequestMapping(value = "Messages/toLesserMessages/{id}",method = RequestMethod.GET)
+    /*@RequestMapping(value = "Messages/toLesserMessages/{id}",method = RequestMethod.GET)
+    @ResponseBody
     public String toLM(Model model,@PathVariable Long id){
         log.error("删除前,id:"+id);
         Message message = messageService.findByID(id);
         model.addAttribute("message",message);
         return "message/MesDelConfirm";
-    }
+    }*/
     //确定删除留言
-    @RequestMapping(value = "Messages/LesserMessages/{id}",
+    @RequestMapping(value = "Messages/LesserMessages",
             method = RequestMethod.DELETE)
-    public String LesserM(@PathVariable Long id){
+    @ResponseBody
+    public String LesserM(Long id){
         log.error("执行了删除方法,id:"+id);
+        List<Message> messageList = messageService.findAllMessage();
         messageService.deleteMessage(id);
-        return "redirect:/Messages/AllMessages";
+        List<Message> messageList1 = messageService.findAllMessage();
+        log.error("deleted"+(messageList.size()-messageList1.size())+"record");
+        return "deleted "+(messageList.size()-messageList1.size())+" record";
     }
 }
