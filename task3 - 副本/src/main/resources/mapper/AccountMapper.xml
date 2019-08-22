@@ -35,7 +35,7 @@
 
     <select id="findByName" parameterType="java.lang.String" resultMap="AccountResultMap">
         select * from accounts
-        where account_name=#{account_name}
+        where account_name = #{account_name}
     </select>
 
     <select id="findAllAccount" resultMap="AccountResultMap">
@@ -49,4 +49,7 @@
         select * from accounts where role = #{role}
     </select>
 
+    <select id="getId" resultType="java.lang.Integer" parameterType="string">
+        select id from accounts where account_name = #{account_name}
+    </select>
 </mapper>

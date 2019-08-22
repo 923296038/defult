@@ -9,7 +9,7 @@ public interface RoleMapper {
     boolean deleteByPrimaryKey(Long id);
 
     int insert(Role record);
-
+    int getId(Long create_at);
     int insertSelective(Role record);
 
     Role selectByPrimaryKey(Long id);

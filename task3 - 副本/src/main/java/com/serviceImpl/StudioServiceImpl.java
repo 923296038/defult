@@ -18,7 +18,8 @@ public class StudioServiceImpl implements StudioService {
 
     @Override
     public int insert(Studio record) {
-        return studioMapper.insert(record);
+        studioMapper.insert(record);
+        return studioMapper.getId(record.getStudio_name());
     }
 
     @Override

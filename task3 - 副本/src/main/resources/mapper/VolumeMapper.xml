@@ -47,4 +47,7 @@
     <select id="findById" resultType="com.pojo.Volume" parameterType="Long">
         select * from volumes where id = #{id}
     </select>
+    <select id="getId" resultType="java.lang.Integer" parameterType="string">
+        select id from volumes where volume_name = #{volume_name}
+    </select>
 </mapper>

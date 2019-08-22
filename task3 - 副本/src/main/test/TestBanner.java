@@ -18,7 +18,7 @@ public class TestBanner {
     private static final Logger log = LogManager.getLogger(TestBanner.class);
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     BannerService bannerService = (BannerService) context.getBean("bannerService");
-    @Test
+    /*@Test
     public void testInsert(){
         Banner banner = new Banner("wang","1","下架",1,1);
         bannerService.insertBanner(banner);
@@ -52,5 +52,5 @@ public class TestBanner {
     @Test
     public void testDownBanner(){
         bannerService.downBanner(8);
-    }
+    }*/
 }

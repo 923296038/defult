@@ -16,7 +16,8 @@ public class BannerServiceImpl implements BannerService {
 
     @Override
     public int insertBanner(Banner banner) {
-        return bannerMapper.insertBanner(banner);
+        bannerMapper.insertBanner(banner);
+        return bannerMapper.getId(banner.getUrl());
     }
 
     @Override

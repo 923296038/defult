@@ -43,4 +43,7 @@
     <select id="findById" resultType="com.pojo.Module" parameterType="Long">
         select * from modules where id = #{id}
     </select>
+    <select id="getId" resultType="java.lang.Integer" parameterType="String">
+        select id from modules where module_name = #{module_name}
+    </select>
 </mapper>

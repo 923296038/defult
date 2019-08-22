@@ -43,7 +43,11 @@ select * from messages
 </select>
 
     <select id="findByID" resultType="com.pojo.Message" parameterType="Long">
-select * from messages where id = #{id}
+        select * from messages where id = #{id}
+    </select>
+
+    <select id="getId" resultType="java.lang.Integer" parameterType="Long">
+       select id from messages where create_at = #{create_at}
     </select>
 
     <update id="upMessage">

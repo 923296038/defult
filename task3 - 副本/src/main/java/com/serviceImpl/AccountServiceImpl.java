@@ -14,7 +14,8 @@ public class AccountServiceImpl implements AccountService {
     private AccountMapper accountMapper;
     @Override
     public int insertAccount(Account account) {
-        return accountMapper.insertAccount(account);
+        accountMapper.insertAccount(account);
+        return accountMapper.getId(account.getAccount_name());
     }
 
     @Override

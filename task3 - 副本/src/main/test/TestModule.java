@@ -13,7 +13,7 @@ public class TestModule {
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     ModuleService moduleService = (ModuleService) context.getBean("moduleService");
 
-    @Test
+    /*@Test
     public void testInsert(){
         Module module = new Module();
         module.setModule_name("留言");
@@ -45,6 +45,6 @@ public class TestModule {
         module.setModule_name("留言2");
         module.setId(1);
         moduleService.updateModule(module);
-    }
+    }*/
 
 }

@@ -8,7 +8,7 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
-    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
     <!--    <context:component-scan base-package="com.controller">-->
     <!--    </context:component-scan>-->
     <context:component-scan base-package="com.controller" />
@@ -32,23 +32,30 @@
 
     <mvc:default-servlet-handler/>
 
-
-
+    <!--新写法-->
+    <mvc:annotation-driven validator="validator" >
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=utf-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+                <property name="writeAcceptCharset" value="false"/>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=utf-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
     <!--校验器注入处理器适配器中-->
-    <mvc:annotation-driven   validator="validator"/>
-    <!--conversion-service="conversionService"-->
-    <!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        &lt;!&ndash; 转换器 &ndash;&gt;
-        <property name="converters">
-            <list>
-                &lt;!&ndash; 日期类型转换 &ndash;&gt;
-                <bean class="com.converter.LongConverter"/>
-            </list>
-        </property>
-    </bean>-->
-
-
-    <!--配置校验器-->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <!-- hibernate校验器 -->
         <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
@@ -71,6 +78,64 @@
         <!-- 资源文件缓存时间 -->
         <property name="cacheSeconds" value="120"></property>
     </bean>
+
+    <!--无效的写法-->
+    <!--<mvc:annotation-driven   validator="validator"/>
+    &lt;!&ndash;responseBody不显示中文解决&ndash;&gt;
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" >
+        <property name="messageConverters">
+            <list>
+                &lt;!&ndash;                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />&ndash;&gt;
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <value>text/plain;charset=utf-8</value>
+                            <value>text/html;charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    &lt;!&ndash;校验器注入处理器适配器中&ndash;&gt;
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        &lt;!&ndash; hibernate校验器 &ndash;&gt;
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        &lt;!&ndash; 指定校验使用的资源文件，在文件中配置校验错误信息,如不指定，则默认classpath下的validationMessage.properties文件 &ndash;&gt;
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+    &lt;!&ndash; 校验错误信息配置文件 &ndash;&gt;
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        &lt;!&ndash; 资源文件名 &ndash;&gt;
+        <property name="basenames">
+            <list>
+                &lt;!&ndash; 配置错误信息文件 CustomValidationMessages.properties&ndash;&gt;
+                <value>classpath:CustomValidationMessages</value>
+            </list>
+        </property>
+        &lt;!&ndash; 解决中文乱码 &ndash;&gt;
+        <property name="defaultEncoding" value="utf-8"></property>
+        &lt;!&ndash; 资源文件编码格式 &ndash;&gt;
+        <property name="fileEncodings" value="utf-8"></property>
+        &lt;!&ndash; 资源文件缓存时间 &ndash;&gt;
+        <property name="cacheSeconds" value="120"></property>
+    </bean>
+-->
+
+    <!--conversion-service="conversionService"-->
+    <!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        &lt;!&ndash; 转换器 &ndash;&gt;
+        <property name="converters">
+            <list>
+                &lt;!&ndash; 日期类型转换 &ndash;&gt;
+                <bean class="com.converter.LongConverter"/>
+            </list>
+        </property>
+    </bean>-->
+
+
+    <!--配置校验器-->
+
 
     <!--上传图片的配置-->
     <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

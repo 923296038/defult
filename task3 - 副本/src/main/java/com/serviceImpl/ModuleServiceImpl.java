@@ -15,7 +15,8 @@ public class ModuleServiceImpl implements ModuleService {
     ModuleMapper moduleMapper;
     @Override
     public int insertModule(Module module) {
-        return moduleMapper.insertModule(module);
+        moduleMapper.insertModule(module);
+        return moduleMapper.getId(module.getModule_name());
     }
 
     @Override

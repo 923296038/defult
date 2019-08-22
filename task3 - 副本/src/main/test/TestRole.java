@@ -12,7 +12,7 @@ public class TestRole {
     private static final Logger log = LogManager.getLogger(TestRole.class);
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     RoleService roleService = (RoleService) context.getBean("roleService");
-    @Test
+    /*@Test
     public void testI(){
         Role role = new Role();
         Role role1 = new Role();
@@ -44,5 +44,5 @@ public class TestRole {
         role.setRole("Update");
         role.setId(1L);
         roleService.updateByPrimaryKey(role);
-    }
+    }*/
 }

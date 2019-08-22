@@ -18,7 +18,8 @@ public class TypeServiceImpl implements TypeService {
 
     @Override
     public int insert(Type record) {
-        return typeMapper.insert(record);
+        typeMapper.insert(record);
+        return typeMapper.getId(record.getType_name());
     }
 
     @Override

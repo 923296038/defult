@@ -18,7 +18,8 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public int insert(Role record) {
-        return roleMapper.insert(record);
+        roleMapper.insert(record);
+        return roleMapper.getId(record.getCreate_at());
     }
 
     @Override

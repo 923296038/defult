@@ -8,7 +8,7 @@ public interface StudioMapper {
     boolean deleteByPrimaryKey(Long id);
 
     int insert(Studio record);
-
+    int getId(String studio_name);
     int insertSelective(Studio record);
 
     Studio selectByPrimaryKey(Long id);

@@ -13,7 +13,7 @@ public class TestMessage {
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     MessageService messageService = (MessageService) context.getBean("messageService");
 
-    @Test
+   /* @Test
     public void testInsert(){
         Message message=new Message();
         message.setUpdate_by("testI");
@@ -51,5 +51,5 @@ public class TestMessage {
     @Test
     public void testDown(){
         messageService.downMessage(1L);
-    }
+    }*/
 }

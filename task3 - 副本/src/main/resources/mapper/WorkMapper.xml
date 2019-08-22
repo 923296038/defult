@@ -35,7 +35,15 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select * from works
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+
+  <select id="selectByVolumeName" resultMap="BaseResultMap" parameterType="String">
+    select * from works where volume_name = #{volume_name}
+  </select>
+    <select id="getId" resultType="java.lang.Integer" parameterType="string">
+      select id from works where work_name = #{work_name}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from works
     where id = #{id,jdbcType=BIGINT}
   </delete>

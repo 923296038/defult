@@ -23,7 +23,10 @@
   <select id="findAll" resultMap="RoleResultMap">
     select * from roles
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <select id="getId" resultType="java.lang.Integer" parameterType="Long">
+      select id from roles where create_at = #{create_at}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from roles
     where id = #{id,jdbcType=BIGINT}
   </delete>

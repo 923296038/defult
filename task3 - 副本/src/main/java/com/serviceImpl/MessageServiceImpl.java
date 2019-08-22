@@ -15,7 +15,8 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public int insertMessage(Message message) {
-        return messageMapper.insertMessage(message);
+        messageMapper.insertMessage(message);
+        return messageMapper.getId(message.getCreate_at());
     }
 
     @Override

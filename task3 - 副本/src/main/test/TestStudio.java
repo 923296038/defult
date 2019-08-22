@@ -13,7 +13,7 @@ public class TestStudio {
     private static final Logger log = LogManager.getLogger(TestStudio.class);
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     StudioService studioService = (StudioService) context.getBean("studioService");
-    @Test
+    /*@Test
     public void testI(){
         Studio studio = new Studio();
         Studio studio1 = new Studio();
@@ -55,5 +55,5 @@ public class TestStudio {
     @Test
     public void testDownS(){
         studioService.downStudio(2L);
-    }
+    }*/
 }

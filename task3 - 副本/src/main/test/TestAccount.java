@@ -16,7 +16,7 @@ public class TestAccount {
     private static final Logger log = LogManager.getLogger(TestAccount.class);
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     AccountService accountService = (AccountService) context.getBean("accountService");
-    @Test
+    /*@Test
     public void testInsert(){
         Account account1 = new Account("wang","hero",1,"wang");
         log.error(account1);
@@ -42,5 +42,5 @@ public class TestAccount {
         account1.setId(1);
         log.error(account1);
         accountService.updateAccount(account1);
-    }
+    }*/
 }

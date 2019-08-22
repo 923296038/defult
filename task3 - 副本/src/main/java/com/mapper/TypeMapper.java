@@ -8,7 +8,7 @@ public interface TypeMapper {
     boolean deleteByPrimaryKey(Long id);
 
     int insert(Type record);
-
+    int getId(String type_name);
     int insertSelective(Type record);
 
     Type selectByPrimaryKey(Long id);

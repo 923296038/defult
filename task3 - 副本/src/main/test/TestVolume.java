@@ -12,7 +12,7 @@ public class TestVolume {
     private static final Logger log = LogManager.getLogger(TestVolume.class);
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     VolumeService volumeService= (VolumeService) context.getBean("volumeService");
-    @Test
+    /*@Test
     public void testI(){
         Volume volume = new Volume();
         volume.setVolume_name("wang");
@@ -46,5 +46,5 @@ public class TestVolume {
     @Test
     public void testDV(){
         volumeService.downVolume(1L);
-    }
+    }*/
 }

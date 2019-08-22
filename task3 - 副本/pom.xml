@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>ocm.jnshu</groupId>
+  <groupId>com.jnshu</groupId>
   <artifactId>Task</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -289,6 +289,17 @@
     </dependency>
     <!--Json end-->
 
+    <!--responseBody不显示中文问题解决-->
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.8.10</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-core-asl</artifactId>
+      <version>1.8.10</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -298,7 +309,11 @@
         <artifactId>maven-clean-plugin</artifactId>
         <version>3.0.0</version>
 
+
+
       </plugin>
+      <!-- 打包需要的插件 -->
+
       <!--jetty插件-->
       <!--jetty start-->
       <plugin>

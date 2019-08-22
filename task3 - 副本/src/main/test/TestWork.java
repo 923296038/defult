@@ -12,7 +12,7 @@ public class TestWork {
     private static final Logger log = LogManager.getLogger(TestWork.class);
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     WorkService workService = (WorkService) context.getBean("workService");
-    @Test
+    /*@Test
     public void test(){
         Work work = new Work();
         Work work1 = new Work();
@@ -40,5 +40,5 @@ public class TestWork {
         workService.downWork(2L);
         List<Work> workList2=workService.selectAll();
         log.error("上下架后:"+workList2);
-    }
+    }*/
 }

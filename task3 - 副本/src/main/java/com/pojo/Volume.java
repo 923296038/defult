@@ -3,7 +3,7 @@ package com.pojo;
 public class Volume {
     private long id;
     private String volume_name;
-    private String status;
+    private String status = "下架";
     private long create_at;
     private long update_at;
     private String update_by;

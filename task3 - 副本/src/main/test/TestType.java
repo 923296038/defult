@@ -13,7 +13,7 @@ public class TestType {
     private static final Logger log = LogManager.getLogger(TestType.class);
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     TypeService typeService = (TypeService) context.getBean("typeService");
-    @Test
+    /*@Test
     public void testI(){
         Type type = new Type();
         Type type1 = new Type();
@@ -47,5 +47,5 @@ public class TestType {
     public void testUoD(){
         typeService.upType(1L);
         typeService.downType(2L);
-    }
+    }*/
 }

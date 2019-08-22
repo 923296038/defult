@@ -33,6 +33,9 @@
   <select id="findByStatus" resultMap="BaseResultMap" parameterType="Studio">
     select * from studios where status=#{status}
   </select>
+    <select id="getId" resultType="java.lang.Integer" parameterType="string">
+      select id from studios where studio_name = #{studio_name}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from studios

@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface BannerMapper {
     int insertBanner(Banner banner);
+    int getId(String url);
     boolean deleteBanner(long id);
     boolean updateBanner(Banner banner);
     List<Banner> findByName(String create_by);

@@ -12,6 +12,7 @@ public class Account {
     private String role;
     private long update_at;
     private String update_by;
+    @NotBlank(message = "密码为空")
     @Size(min=7,max=20,message = "长度大于6")
     private String password;
 

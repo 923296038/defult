@@ -50,6 +50,9 @@ select * from banners
     <select id="findByStauts" resultMap="BannerResultMap" parameterType="String">
         select * from banners where status = #{status}
     </select>
+    <select id="getId" resultType="java.lang.Integer" parameterType="String">
+        select id from banners where url = #{url}
+    </select>
 
     <update id="upBanner">
 update banners

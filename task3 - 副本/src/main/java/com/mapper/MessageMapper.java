@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface MessageMapper {
     int insertMessage(Message message);
+    int getId(Long create_at);
     boolean deleteMessage(Long id);
     boolean updateMessage(Message message);
     boolean updateReply(Message message);

@@ -15,7 +15,8 @@ public class VolumeServiceImpl implements VolumeService {
     VolumeMapper volumeMapper;
     @Override
     public int insertVolume(Volume volume) {
-        return volumeMapper.insertVolume(volume);
+        volumeMapper.insertVolume(volume);
+        return volumeMapper.getId(volume.getVolume_name());
     }
 
     @Override

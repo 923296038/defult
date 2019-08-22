@@ -19,7 +19,8 @@ public class WorkServiceImpl implements WorkService {
 
     @Override
     public int insert(Work record) {
-        return workMapper.insert(record);
+        workMapper.insert(record);
+        return workMapper.getId(record.getWork_name());
     }
 
 
@@ -31,6 +32,11 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public List<Work> selectAll() {
         return workMapper.selectAll();
+    }
+
+    @Override
+    public List<Work> selectByVolumeName(String volume_name) {
+        return workMapper.selectByVolumeName(volume_name);
     }
 
     @Override
