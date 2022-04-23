@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.1.7.RELEASE</version>
+            <version>5.3.19</version>
         </dependency>
         <!--核心工具包,spring其他组件都要使用到这个包里的类-->
         <dependency>
