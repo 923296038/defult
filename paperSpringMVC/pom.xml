@@ -67,7 +67,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-expression</artifactId>
-      <version>4.3.14.RELEASE</version>
+      <version>5.2.21.RELEASE</version>
     </dependency>
     <!--是spring-context.RELEASE.jar依赖包.是spring事务处理的jar-->
     <dependency>
